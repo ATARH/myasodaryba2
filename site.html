@@ -387,6 +387,7 @@ footer{background:var(--ink);padding:60px 48px 32px;border-top:1px solid rgba(25
       <button class="tab-btn" onclick="showCat('soup',this)">🫕 Супы</button>
       <button class="tab-btn" onclick="showCat('sauce',this)">🫙 Соусы</button>
       <button class="tab-btn" onclick="showCat('street',this)">🌯 Стрит</button>
+      <button class="tab-btn" onclick="showCat('friture',this)">🍟 Фритюр</button>
     </div>
 
     <div class="menu-grid" id="menuGrid">
@@ -409,12 +410,12 @@ footer{background:var(--ink);padding:60px 48px 32px;border-top:1px solid rgba(25
           <div class="menu-card-left"><div class="menu-card-name">Баранина мякоть</div><div class="menu-card-unit">за 100 г · + в корзину</div></div>
           <div class="menu-card-price">440 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Говядина вырезка', 490, '100 г')">
-          <div class="menu-card-left"><div class="menu-card-name">Говядина вырезка</div><div class="menu-card-unit">за 100 г · + в корзину</div></div>
+        <div class="menu-card" onclick="addToCart('Вырезка говяжья', 490, '100 г')">
+          <div class="menu-card-left"><div class="menu-card-name">Вырезка говяжья</div><div class="menu-card-unit">за 100 г · + в корзину</div></div>
           <div class="menu-card-price">490 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Язык говядина', 440, '100 г')">
-          <div class="menu-card-left"><div class="menu-card-name">Язык говядина</div><div class="menu-card-unit">за 100 г · + в корзину</div></div>
+        <div class="menu-card" onclick="addToCart('Язык говяжий', 440, '100 г')">
+          <div class="menu-card-left"><div class="menu-card-name">Язык говяжий</div><div class="menu-card-unit">за 100 г · + в корзину</div></div>
           <div class="menu-card-price">440 ₽</div>
         </div>
         <div class="menu-card" onclick="addToCart('Люля классика', 210, '100 г')">
@@ -425,9 +426,21 @@ footer{background:var(--ink);padding:60px 48px 32px;border-top:1px solid rgba(25
           <div class="menu-card-left"><div class="menu-card-name">Баран кебаб</div><div class="menu-card-unit">за 100 г · + в корзину</div></div>
           <div class="menu-card-price">400 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Колбаски ассорти', 130, '1 шт')">
-          <div class="menu-card-left"><div class="menu-card-name">Колбаски ассорти</div><div class="menu-card-unit">1 шт · + в корзину</div></div>
-          <div class="menu-card-price">130 ₽</div>
+        <div class="menu-card" onclick="addToCart('Колбаски ассорти', 185, '100 г')">
+          <div class="menu-card-left"><div class="menu-card-name">Колбаски ассорти</div><div class="menu-card-unit">100 г · + в корзину</div></div>
+          <div class="menu-card-price">185 ₽</div>
+        </div>
+        <div class="menu-card" onclick="addToCart('Купаты из индейки', 185, '100 г')">
+          <div class="menu-card-left"><div class="menu-card-name">Купаты из индейки</div><div class="menu-card-unit">100 г · + в корзину</div></div>
+          <div class="menu-card-price">185 ₽</div>
+        </div>
+        <div class="menu-card" onclick="addToCart('Купаты говяжьи с сыром', 185, '100 г')">
+          <div class="menu-card-left"><div class="menu-card-name">Купаты говяжьи с сыром</div><div class="menu-card-unit">100 г · + в корзину</div></div>
+          <div class="menu-card-price">185 ₽</div>
+        </div>
+        <div class="menu-card" onclick="addToCart('Улитки куриные', 185, '100 г')">
+          <div class="menu-card-left"><div class="menu-card-name">Улитки куриные</div><div class="menu-card-unit">100 г · + в корзину</div></div>
+          <div class="menu-card-price">185 ₽</div>
         </div>
       </div>
 
@@ -475,6 +488,10 @@ footer{background:var(--ink);padding:60px 48px 32px;border-top:1px solid rgba(25
         </div>
         <div class="menu-card" onclick="addToCart('Цыплёнок тапака', 380, '1 шт')">
           <div class="menu-card-left"><div class="menu-card-name">Цыплёнок тапака</div><div class="menu-card-unit">1 шт · + в корзину</div></div>
+          <div class="menu-card-price">380 ₽</div>
+        </div>
+        <div class="menu-card" onclick="addToCart('Перепёлка', 380, '1 шт')">
+          <div class="menu-card-left"><div class="menu-card-name">Перепёлка</div><div class="menu-card-unit">1 шт · + в корзину</div></div>
           <div class="menu-card-price">380 ₽</div>
         </div>
         <div class="menu-card" onclick="addToCart('Люля курица', 190, '100 г')">
@@ -529,6 +546,14 @@ footer{background:var(--ink);padding:60px 48px 32px;border-top:1px solid rgba(25
           <div class="menu-card-left"><div class="menu-card-name">Тайский</div><div class="menu-card-unit">250 г · + в корзину</div></div>
           <div class="menu-card-price">480 ₽</div>
         </div>
+        <div class="menu-card" onclick="addToCart('Тёплый салат с баклажаном', 370, '250 г')">
+          <div class="menu-card-left"><div class="menu-card-name">Тёплый салат с баклажаном</div><div class="menu-card-unit">250 г · + в корзину</div></div>
+          <div class="menu-card-price">370 ₽</div>
+        </div>
+        <div class="menu-card" onclick="addToCart('Тёплый салат с языком', 480, '250 г')">
+          <div class="menu-card-left"><div class="menu-card-name">Тёплый салат с языком</div><div class="menu-card-unit">250 г · + в корзину</div></div>
+          <div class="menu-card-price">480 ₽</div>
+        </div>
       </div>
 
       <!-- ХАЧАПУРИ -->
@@ -568,6 +593,10 @@ footer{background:var(--ink);padding:60px 48px 32px;border-top:1px solid rgba(25
         <div class="menu-card" onclick="addToCart('Лобио', 230, '1 порция')">
           <div class="menu-card-left"><div class="menu-card-name">Лобио</div><div class="menu-card-unit">1 порция · + в корзину</div></div>
           <div class="menu-card-price">230 ₽</div>
+        </div>
+        <div class="menu-card" onclick="addToCart('Супчик дня', 350, '1 порция')">
+          <div class="menu-card-left"><div class="menu-card-name">Супчик дня</div><div class="menu-card-unit">1 порция · + в корзину</div></div>
+          <div class="menu-card-price">350 ₽</div>
         </div>
       </div>
 
@@ -609,12 +638,12 @@ footer{background:var(--ink);padding:60px 48px 32px;border-top:1px solid rgba(25
           <div class="menu-card-left"><div class="menu-card-name">Бургер</div><div class="menu-card-unit">1 шт · + в корзину</div></div>
           <div class="menu-card-price">450 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Шаурма курица', 300, '1 шт')">
-          <div class="menu-card-left"><div class="menu-card-name">Шаурма курица</div><div class="menu-card-unit">1 шт · + в корзину</div></div>
+        <div class="menu-card" onclick="addToCart('Шаурма с курицей', 300, '1 шт')">
+          <div class="menu-card-left"><div class="menu-card-name">Шаурма с курицей</div><div class="menu-card-unit">1 шт · + в корзину</div></div>
           <div class="menu-card-price">300 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Шаурма свинина', 330, '1 шт')">
-          <div class="menu-card-left"><div class="menu-card-name">Шаурма свинина</div><div class="menu-card-unit">1 шт · + в корзину</div></div>
+        <div class="menu-card" onclick="addToCart('Шаурма со свининой', 330, '1 шт')">
+          <div class="menu-card-left"><div class="menu-card-name">Шаурма со свининой</div><div class="menu-card-unit">1 шт · + в корзину</div></div>
           <div class="menu-card-price">330 ₽</div>
         </div>
         <div class="menu-card" onclick="addToCart('Хот-дог', 260, '1 шт')">
@@ -623,6 +652,30 @@ footer{background:var(--ink);padding:60px 48px 32px;border-top:1px solid rgba(25
         </div>
       </div>
 
+
+      <!-- ФРИТЮР -->
+      <div class="menu-cat-hidden" data-cat="friture">
+        <div class="menu-card" onclick="addToCart('Картофель по-деревенски', 170, '250 г')">
+          <div class="menu-card-left"><div class="menu-card-name">Картофель по-деревенски</div><div class="menu-card-unit">250 г · + в корзину</div></div>
+          <div class="menu-card-price">170 ₽</div>
+        </div>
+        <div class="menu-card" onclick="addToCart('Картофель фри', 170, '250 г')">
+          <div class="menu-card-left"><div class="menu-card-name">Картофель фри</div><div class="menu-card-unit">250 г · + в корзину</div></div>
+          <div class="menu-card-price">170 ₽</div>
+        </div>
+        <div class="menu-card" onclick="addToCart('Наггетсы', 210, '1 порция')">
+          <div class="menu-card-left"><div class="menu-card-name">Наггетсы</div><div class="menu-card-unit">1 порция · + в корзину</div></div>
+          <div class="menu-card-price">210 ₽</div>
+        </div>
+        <div class="menu-card" onclick="addToCart('Креветка темпура', 420, '200 г')">
+          <div class="menu-card-left"><div class="menu-card-name">Креветка темпура</div><div class="menu-card-unit">200 г · + в корзину</div></div>
+          <div class="menu-card-price">420 ₽</div>
+        </div>
+        <div class="menu-card" onclick="addToCart('Сырные палочки', 330, '200 г')">
+          <div class="menu-card-left"><div class="menu-card-name">Сырные палочки</div><div class="menu-card-unit">200 г · + в корзину</div></div>
+          <div class="menu-card-price">330 ₽</div>
+        </div>
+      </div>
     </div><!-- /menu-grid -->
   </div>
 </section>
@@ -817,38 +870,163 @@ footer{background:var(--ink);padding:60px 48px 32px;border-top:1px solid rgba(25
 </section>
 
 <!-- INVESTORS -->
-<section id="investors" style="padding:100px 0;">
-  <div class="inv-bg"></div>
-  <div class="container inv-content">
-    <div class="sec-tag" style="color:var(--champ);">05 — Инвесторам</div>
-    <div class="inv-grid">
-      <div>
-        <h2 class="inv-h2">Почему <em>ЖАРОЧНАЯ</em> — это возможность</h2>
-        <p class="inv-body">Работающая точка в Сочи с подтверждённым спросом. Уникальное позиционирование: мясо и рыба на живом огне — широкая аудитория при простой операционной модели. Готовый бренд, фирменный стиль и система продаж. Следующий шаг — масштабирование.</p>
-        <div class="inv-contact">
-          <div class="inv-contact-label">Контакт для переговоров</div>
-          <div class="inv-contact-val"><a href="tel:+79384501818" style="color:var(--champ);text-decoration:none;">+7 (938) 450-18-18</a></div>
+<section id="investors" style="background:#0C0C0C;padding:100px 0;overflow:hidden;">
+
+  <!-- Заголовок -->
+  <div style="max-width:1160px;margin:0 auto;padding:0 48px;text-align:center;margin-bottom:80px;">
+    <div style="font-size:9px;letter-spacing:6px;text-transform:uppercase;color:#C9A84C;font-weight:600;margin-bottom:16px;">Для инвесторов и партнёров</div>
+    <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(36px,5vw,64px);color:#FAFAF8;line-height:1.1;margin-bottom:20px;">Войдите в бизнес,<br><em style="font-style:italic;color:#E4C76B;">который уже работает</em></h2>
+    <div style="width:40px;height:2px;background:#C9A84C;opacity:.5;margin:0 auto 24px;"></div>
+    <p style="font-size:15px;color:#888;font-weight:300;max-width:560px;margin:0 auto;line-height:1.8;">ЖАРОЧНАЯ #МясоДаРыба — это готовая работающая концепция с потенциалом масштабирования в сеть по всему Краснодарскому краю и России.</p>
+  </div>
+
+  <!-- Слайды -->
+  <div style="position:relative;max-width:1400px;margin:0 auto;">
+
+    <!-- Слайд 1 — Почему сейчас -->
+    <div class="inv-slide" style="display:flex;align-items:stretch;gap:0;margin-bottom:3px;">
+      <div style="flex:1;background:#141414;padding:64px 60px;display:flex;flex-direction:column;justify-content:center;">
+        <div style="font-size:9px;letter-spacing:5px;text-transform:uppercase;color:#C9A84C;font-weight:600;margin-bottom:20px;">01 — Момент</div>
+        <h3 style="font-family:'DM Serif Display',serif;font-size:clamp(28px,3.5vw,48px);color:#FAFAF8;line-height:1.15;margin-bottom:24px;">Почему <em style="font-style:italic;color:#E4C76B;">сейчас</em> — лучший момент?</h3>
+        <p style="font-size:15px;color:#888;font-weight:300;line-height:1.8;max-width:480px;">Сочи — один из самых быстрорастущих городов России. Туристический поток увеличивается каждый год. Рынок уличной еды premium-casual практически не занят. Конкурентов в формате «мясо + рыба на живом огне» в городе нет.</p>
+        <div style="display:flex;gap:32px;margin-top:36px;flex-wrap:wrap;">
+          <div>
+            <div style="font-family:'DM Serif Display',serif;font-size:36px;color:#C9A84C;line-height:1;">7 млн+</div>
+            <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#888;margin-top:4px;">туристов в год</div>
+          </div>
+          <div>
+            <div style="font-family:'DM Serif Display',serif;font-size:36px;color:#C9A84C;line-height:1;">365</div>
+            <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#888;margin-top:4px;">дней сезон</div>
+          </div>
+          <div>
+            <div style="font-family:'DM Serif Display',serif;font-size:36px;color:#C9A84C;line-height:1;">0</div>
+            <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#888;margin-top:4px;">прямых конкурентов</div>
+          </div>
         </div>
       </div>
-      <div class="inv-stats">
-        <div class="inv-stat">
-          <div class="inv-stat-n">2в1</div>
-          <div class="inv-stat-l">Мясо + Рыба — уникальный формат</div>
-        </div>
-        <div class="inv-stat">
-          <div class="inv-stat-n">30+</div>
-          <div class="inv-stat-l">Позиций в меню</div>
-        </div>
-        <div class="inv-stat">
-          <div class="inv-stat-n">365</div>
-          <div class="inv-stat-l">Дней в году — работаем ежедневно</div>
-        </div>
-        <div class="inv-stat">
-          <div class="inv-stat-n">∞</div>
-          <div class="inv-stat-l">Потенциал сети по Краснодарскому краю</div>
+      <div style="width:420px;background:linear-gradient(135deg,#1A0A02,#2D1005);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <div style="text-align:center;padding:40px;">
+          <div style="font-size:80px;margin-bottom:16px;">🔥</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:22px;color:#E4C76B;font-style:italic;line-height:1.4;">«Живой огонь —<br>живой бизнес»</div>
         </div>
       </div>
     </div>
+
+    <!-- Слайд 2 — Уникальность -->
+    <div class="inv-slide" style="display:flex;align-items:stretch;gap:0;margin-bottom:3px;flex-direction:row-reverse;">
+      <div style="flex:1;background:#141414;padding:64px 60px;display:flex;flex-direction:column;justify-content:center;">
+        <div style="font-size:9px;letter-spacing:5px;text-transform:uppercase;color:#C9A84C;font-weight:600;margin-bottom:20px;">02 — Уникальность</div>
+        <h3 style="font-family:'DM Serif Display',serif;font-size:clamp(28px,3.5vw,48px);color:#FAFAF8;line-height:1.15;margin-bottom:24px;">Два мира —<br><em style="font-style:italic;color:#E4C76B;">один мангал</em></h3>
+        <p style="font-size:15px;color:#888;font-weight:300;line-height:1.8;max-width:480px;">Мы объединили два рынка — мясную культуру шашлычной и свежесть черноморской рыбы. Это значит вдвое шире аудитория, вдвое больше поводов прийти. Мясоеды и любители рыбы — наши гости одновременно.</p>
+        <div style="margin-top:36px;display:flex;flex-direction:column;gap:16px;">
+          <div style="display:flex;align-items:center;gap:16px;padding:16px 20px;background:rgba(201,168,76,0.06);border-left:2px solid #C9A84C;">
+            <span style="font-size:24px;">🥩</span>
+            <div style="font-size:13px;color:#E8E0D0;font-weight:400;">Свинина, баранина, говядина — на живых углях</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px;padding:16px 20px;background:rgba(201,168,76,0.06);border-left:2px solid #C9A84C;">
+            <span style="font-size:24px;">🐟</span>
+            <div style="font-size:13px;color:#E8E0D0;font-weight:400;">Черноморская рыба, сёмга, форель — тоже на мангале</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px;padding:16px 20px;background:rgba(201,168,76,0.06);border-left:2px solid #C9A84C;">
+            <span style="font-size:24px;">🫓</span>
+            <div style="font-size:13px;color:#E8E0D0;font-weight:400;">Хачапури, супы, салаты — полноценный обед или ужин</div>
+          </div>
+        </div>
+      </div>
+      <div style="width:420px;background:linear-gradient(135deg,#0A1A0A,#051205);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <div style="text-align:center;padding:40px;">
+          <div style="font-size:72px;margin-bottom:16px;">2в1</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:20px;color:#E4C76B;font-style:italic;line-height:1.4;">Мясо + Рыба<br>в одном месте</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Слайд 3 — Готовый бренд -->
+    <div class="inv-slide" style="display:flex;align-items:stretch;gap:0;margin-bottom:3px;">
+      <div style="flex:1;background:#141414;padding:64px 60px;display:flex;flex-direction:column;justify-content:center;">
+        <div style="font-size:9px;letter-spacing:5px;text-transform:uppercase;color:#C9A84C;font-weight:600;margin-bottom:20px;">03 — Готовность</div>
+        <h3 style="font-family:'DM Serif Display',serif;font-size:clamp(28px,3.5vw,48px);color:#FAFAF8;line-height:1.15;margin-bottom:24px;">Бренд уже <em style="font-style:italic;color:#E4C76B;">построен</em></h3>
+        <p style="font-size:15px;color:#888;font-weight:300;line-height:1.8;max-width:480px;">Не нужно начинать с нуля. Всё уже готово — от концепции до системы продаж. Инвестор получает работающую модель, которую остаётся масштабировать.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:36px;">
+          <div style="padding:20px;background:#1E1E1E;border-top:2px solid #C9A84C;">
+            <div style="font-size:20px;margin-bottom:8px;">✅</div>
+            <div style="font-size:12px;font-weight:600;color:#E8E0D0;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">Работающая точка</div>
+            <div style="font-size:12px;color:#888;font-weight:300;">Сочи, Тепличная 17В</div>
+          </div>
+          <div style="padding:20px;background:#1E1E1E;border-top:2px solid #C9A84C;">
+            <div style="font-size:20px;margin-bottom:8px;">✅</div>
+            <div style="font-size:12px;font-weight:600;color:#E8E0D0;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">Готовый бренд</div>
+            <div style="font-size:12px;color:#888;font-weight:300;">Логотип, брендбук, стиль</div>
+          </div>
+          <div style="padding:20px;background:#1E1E1E;border-top:2px solid #C9A84C;">
+            <div style="font-size:20px;margin-bottom:8px;">✅</div>
+            <div style="font-size:12px;font-weight:600;color:#E8E0D0;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">Сайт и заказы</div>
+            <div style="font-size:12px;color:#888;font-weight:300;">Онлайн-меню, доставка</div>
+          </div>
+          <div style="padding:20px;background:#1E1E1E;border-top:2px solid #C9A84C;">
+            <div style="font-size:20px;margin-bottom:8px;">✅</div>
+            <div style="font-size:12px;font-weight:600;color:#E8E0D0;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">Меню и рецептуры</div>
+            <div style="font-size:12px;color:#888;font-weight:300;">30+ позиций, отработано</div>
+          </div>
+        </div>
+      </div>
+      <div style="width:420px;background:linear-gradient(135deg,#1A1005,#0A0802);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <div style="text-align:center;padding:40px;">
+          <div style="font-size:72px;margin-bottom:16px;">🚀</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:20px;color:#E4C76B;font-style:italic;line-height:1.4;">Готово к<br>масштабированию</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Слайд 4 — Франшиза -->
+    <div class="inv-slide" style="display:flex;align-items:stretch;gap:0;margin-bottom:3px;flex-direction:row-reverse;">
+      <div style="flex:1;background:#141414;padding:64px 60px;display:flex;flex-direction:column;justify-content:center;">
+        <div style="font-size:9px;letter-spacing:5px;text-transform:uppercase;color:#C9A84C;font-weight:600;margin-bottom:20px;">04 — Модель</div>
+        <h3 style="font-family:'DM Serif Display',serif;font-size:clamp(28px,3.5vw,48px);color:#FAFAF8;line-height:1.15;margin-bottom:24px;">Что получает <em style="font-style:italic;color:#E4C76B;">партнёр</em></h3>
+        <p style="font-size:15px;color:#888;font-weight:300;line-height:1.8;max-width:480px;">Мы предлагаем партнёрство в формате совместного развития — открытие новых точек под единым брендом ЖАРОЧНАЯ #МясоДаРыба по всему Краснодарскому краю и за его пределами.</p>
+        <div style="margin-top:36px;display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;gap:12px;align-items:start;">
+            <div style="min-width:28px;height:28px;background:#C9A84C;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;color:#0C0C0C;flex-shrink:0;">1</div>
+            <div style="font-size:14px;color:#E8E0D0;line-height:1.6;">Готовая бизнес-модель и операционные стандарты</div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:start;">
+            <div style="min-width:28px;height:28px;background:#C9A84C;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;color:#0C0C0C;flex-shrink:0;">2</div>
+            <div style="font-size:14px;color:#E8E0D0;line-height:1.6;">Бренд, дизайн, маркетинговые материалы</div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:start;">
+            <div style="min-width:28px;height:28px;background:#C9A84C;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;color:#0C0C0C;flex-shrink:0;">3</div>
+            <div style="font-size:14px;color:#E8E0D0;line-height:1.6;">Поддержка на каждом этапе открытия</div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:start;">
+            <div style="min-width:28px;height:28px;background:#C9A84C;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;color:#0C0C0C;flex-shrink:0;">4</div>
+            <div style="font-size:14px;color:#E8E0D0;line-height:1.6;">Меню, рецептуры и обучение персонала</div>
+          </div>
+        </div>
+      </div>
+      <div style="width:420px;background:linear-gradient(135deg,#0A0A1A,#050510);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <div style="text-align:center;padding:40px;">
+          <div style="font-size:72px;margin-bottom:16px;">🤝</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:20px;color:#E4C76B;font-style:italic;line-height:1.4;">Партнёрство<br>на равных</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA — Связаться -->
+    <div style="background:linear-gradient(135deg,#4A0E1A,#2D0810);padding:80px 60px;text-align:center;position:relative;overflow:hidden;">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(201,168,76,0.1),transparent 60%);pointer-events:none;"></div>
+      <div style="position:relative;z-index:1;">
+        <div style="font-size:9px;letter-spacing:6px;text-transform:uppercase;color:#C9A84C;font-weight:600;margin-bottom:20px;">05 — Следующий шаг</div>
+        <h3 style="font-family:'DM Serif Display',serif;font-size:clamp(32px,4vw,56px);color:#EDD98A;line-height:1.1;margin-bottom:16px;">Готовы обсудить<br><em style="font-style:italic;">детали?</em></h3>
+        <p style="font-size:15px;color:rgba(237,217,138,0.7);font-weight:300;max-width:480px;margin:0 auto 40px;line-height:1.8;">Свяжитесь с основателем напрямую — расскажем о цифрах, покажем точку, ответим на все вопросы. Первый разговор ни к чему не обязывает.</p>
+        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+          <a href="tel:+79384501818" style="padding:18px 44px;background:#C9A84C;color:#0C0C0C;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;text-decoration:none;display:inline-block;transition:background .2s;" onmouseover="this.style.background='#EDD98A'" onmouseout="this.style.background='#C9A84C'">📞 Позвонить основателю</a>
+          <a href="https://wa.me/79384501818?text=Здравствуйте!%20Я%20заинтересован%20в%20партнёрстве%20с%20ЖАРОЧНАЯ%20%23МясоДаРыба.%20Хотел%20бы%20узнать%20подробнее." target="_blank" style="padding:17px 44px;background:transparent;color:#EDD98A;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;text-decoration:none;display:inline-block;border:1px solid rgba(237,217,138,0.5);transition:all .2s;" onmouseover="this.style.borderColor='#EDD98A'" onmouseout="this.style.borderColor='rgba(237,217,138,0.5)'">💬 Написать в WhatsApp</a>
+          <a href="https://t.me/zharovnyaMyasoDaRyba" target="_blank" style="padding:17px 44px;background:transparent;color:#EDD98A;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;text-decoration:none;display:inline-block;border:1px solid rgba(237,217,138,0.5);transition:all .2s;" onmouseover="this.style.borderColor='#EDD98A'" onmouseout="this.style.borderColor='rgba(237,217,138,0.5)'">✈️ Написать в Telegram</a>
+        </div>
+        <div style="margin-top:32px;font-size:13px;color:rgba(237,217,138,0.4);letter-spacing:2px;">+7 (938) 450-18-18 · Сочи</div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -952,8 +1130,8 @@ footer{background:var(--ink);padding:60px 48px 32px;border-top:1px solid rgba(25
       <button class="btn-primary" style="width:100%;background:#25D366;display:flex;align-items:center;justify-content:center;gap:12px;font-size:14px;" onclick="sendViaMessenger('whatsapp')">
         <span style="font-size:22px;">💬</span> Отправить в WhatsApp
       </button>
-      <button class="btn-primary" style="width:100%;background:#0077FF;display:flex;align-items:center;justify-content:center;gap:12px;font-size:14px;" onclick="sendViaMessenger('max')">
-        <span style="font-size:22px;">✉️</span> Отправить в Макс
+      <button class="btn-primary" style="width:100%;background:#229ED9;display:flex;align-items:center;justify-content:center;gap:12px;font-size:14px;" onclick="sendViaMessenger('telegram')">
+        <span style="font-size:22px;">✈️</span> Отправить в Telegram
       </button>
       <button class="btn-ghost" style="width:100%;margin-top:4px;" onclick="closeMessengerModal()">Отмена</button>
     </div>
@@ -1111,8 +1289,8 @@ function sendViaMessenger(type) {
   let url = '';
   if (type === 'whatsapp') {
     url = `https://wa.me/${phone}?text=${msg}`;
-  } else if (type === 'max') {
-    url = `https://max.ru/send?phone=${phone}&text=${msg}`;
+  } else if (type === 'telegram') {
+    url = `https://t.me/zharovnyaMyasoDaRyba?text=${msg}`;
   }
 
   window.open(url, '_blank');
