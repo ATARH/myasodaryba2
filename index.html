@@ -138,8 +138,17 @@ section{padding:100px 0;}
   display:flex;justify-content:space-between;align-items:center;
   gap:16px;transition:background .2s;
   border-left:2px solid transparent;
+  position:relative;cursor:pointer;
 }
 .menu-card:hover{background:var(--slate);border-left-color:var(--gold);}
+.cart-check-badge{
+  position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:50%;
+  background:var(--gold);color:#1A0E06;display:flex;align-items:center;justify-content:center;
+  font-size:15px;font-weight:800;opacity:0;transform:scale(.4);
+  transition:opacity .2s ease,transform .3s cubic-bezier(.34,1.56,.64,1);
+  pointer-events:none;z-index:5;
+}
+.cart-check-badge.show{opacity:1;transform:scale(1);}
 .menu-card-left{}
 .menu-card-name{font-size:14px;color:var(--cream);font-weight:400;margin-bottom:4px;}
 .menu-card-unit{font-size:10px;color:var(--mist);letter-spacing:2px;}
@@ -352,7 +361,7 @@ footer{background:var(--ink);padding:60px 48px 32px;border-top:1px solid rgba(25
 <section id="menu">
   <div class="container">
     <div class="sec-tag">02 — Меню</div>
-    <h2 class="sec-h2">Что на <em>мангале</em></h2>
+    <h2 class="sec-h2">Что готовим</h2>
     <div class="sec-div"></div>
 
     <div class="menu-tabs">
@@ -372,71 +381,71 @@ footer{background:var(--ink);padding:60px 48px 32px;border-top:1px solid rgba(25
 
       <!-- МЯСО НА МАНГАЛЕ -->
       <div class="menu-cat-hidden active" data-cat="meat">
-        <div class="menu-card" onclick="addToCart('Баран кебаб', 290, '100 г')">
+        <div class="menu-card" onclick="addToCart(this, 'Баран кебаб', 290, '100 г')">
           <div class="menu-card-left"><div class="menu-card-name">Баран кебаб</div><div class="menu-card-unit">за 100 г · + в корзину</div></div>
           <div class="menu-card-price">290 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Люля-кебаб из говядины', 270, '100 г')">
+        <div class="menu-card" onclick="addToCart(this, 'Люля-кебаб из говядины', 270, '100 г')">
           <div class="menu-card-left"><div class="menu-card-name">Люля-кебаб из говядины</div><div class="menu-card-unit">100 г · + в корзину</div></div>
           <div class="menu-card-price">270 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Люля-кебаб из баранины', 340, '100 г')">
+        <div class="menu-card" onclick="addToCart(this, 'Люля-кебаб из баранины', 340, '100 г')">
           <div class="menu-card-left"><div class="menu-card-name">Люля-кебаб из баранины</div><div class="menu-card-unit">100 г · + в корзину</div></div>
           <div class="menu-card-price">340 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Люля-кебаб из курицы', 210, '100 г')">
+        <div class="menu-card" onclick="addToCart(this, 'Люля-кебаб из курицы', 210, '100 г')">
           <div class="menu-card-left"><div class="menu-card-name">Люля-кебаб из курицы</div><div class="menu-card-unit">100 г · + в корзину</div></div>
           <div class="menu-card-price">210 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Шашлык из свиной шеи', 280, '100 г')">
+        <div class="menu-card" onclick="addToCart(this, 'Шашлык из свиной шеи', 280, '100 г')">
           <div class="menu-card-left"><div class="menu-card-name">Шашлык из свиной шеи</div><div class="menu-card-unit">за 100 г · + в корзину</div></div>
           <div class="menu-card-price">280 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Шашлык из свиных ребер', 220, '100 г')">
+        <div class="menu-card" onclick="addToCart(this, 'Шашлык из свиных ребер', 220, '100 г')">
           <div class="menu-card-left"><div class="menu-card-name">Шашлык из свиных ребер</div><div class="menu-card-unit">за 100 г · + в корзину</div></div>
           <div class="menu-card-price">220 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Шашлык из бараньей корейки', 580, '100 г')">
+        <div class="menu-card" onclick="addToCart(this, 'Шашлык из бараньей корейки', 580, '100 г')">
           <div class="menu-card-left"><div class="menu-card-name">Шашлык из бараньей корейки</div><div class="menu-card-unit">за 100 г · + в корзину</div></div>
           <div class="menu-card-price">580 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Шашлык из баранины', 490, '100 г')">
+        <div class="menu-card" onclick="addToCart(this, 'Шашлык из баранины', 490, '100 г')">
           <div class="menu-card-left"><div class="menu-card-name">Шашлык из баранины</div><div class="menu-card-unit">за 100 г · + в корзину</div></div>
           <div class="menu-card-price">490 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Шашлык из куриного бедра', 220, '100 г')">
+        <div class="menu-card" onclick="addToCart(this, 'Шашлык из куриного бедра', 220, '100 г')">
           <div class="menu-card-left"><div class="menu-card-name">Шашлык из куриного бедра</div><div class="menu-card-unit">за 100 г · + в корзину</div></div>
           <div class="menu-card-price">220 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Шашлык из куриных крылышек', 160, '100 г')">
+        <div class="menu-card" onclick="addToCart(this, 'Шашлык из куриных крылышек', 160, '100 г')">
           <div class="menu-card-left"><div class="menu-card-name">Шашлык из куриных крылышек</div><div class="menu-card-unit">за 100 г · + в корзину</div></div>
           <div class="menu-card-price">160 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Шашлык из куриного филе', 230, '100 г')">
+        <div class="menu-card" onclick="addToCart(this, 'Шашлык из куриного филе', 230, '100 г')">
           <div class="menu-card-left"><div class="menu-card-name">Шашлык из куриного филе</div><div class="menu-card-unit">за 100 г · + в корзину</div></div>
           <div class="menu-card-price">230 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Люля-кебаб из баранины в лаваше', 550, 'порц')">
+        <div class="menu-card" onclick="addToCart(this, 'Люля-кебаб из баранины в лаваше', 550, 'порц')">
           <div class="menu-card-left"><div class="menu-card-name">Люля-кебаб из баранины в лаваше</div><div class="menu-card-unit">порц · + в корзину</div></div>
           <div class="menu-card-price">550 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Люля-кебаб из говядины в лаваше', 500, 'порц')">
+        <div class="menu-card" onclick="addToCart(this, 'Люля-кебаб из говядины в лаваше', 500, 'порц')">
           <div class="menu-card-left"><div class="menu-card-name">Люля-кебаб из говядины в лаваше</div><div class="menu-card-unit">порц · + в корзину</div></div>
           <div class="menu-card-price">500 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Люля-кебаб из курицы в лаваше', 480, 'порц')">
+        <div class="menu-card" onclick="addToCart(this, 'Люля-кебаб из курицы в лаваше', 480, 'порц')">
           <div class="menu-card-left"><div class="menu-card-name">Люля-кебаб из курицы в лаваше</div><div class="menu-card-unit">порц · + в корзину</div></div>
           <div class="menu-card-price">480 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Люля-кебаб из говядины 200г', 540, '200 г')">
+        <div class="menu-card" onclick="addToCart(this, 'Люля-кебаб из говядины 200г', 540, '200 г')">
           <div class="menu-card-left"><div class="menu-card-name">Люля-кебаб из говядины</div><div class="menu-card-unit">200 г · + в корзину</div></div>
           <div class="menu-card-price">540 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Люля-кебаб из баранины 200г', 680, '200 г')">
+        <div class="menu-card" onclick="addToCart(this, 'Люля-кебаб из баранины 200г', 680, '200 г')">
           <div class="menu-card-left"><div class="menu-card-name">Люля-кебаб из баранины</div><div class="menu-card-unit">200 г · + в корзину</div></div>
           <div class="menu-card-price">680 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Люля-кебаб из курицы 200г', 420, '200 г')">
+        <div class="menu-card" onclick="addToCart(this, 'Люля-кебаб из курицы 200г', 420, '200 г')">
           <div class="menu-card-left"><div class="menu-card-name">Люля-кебаб из курицы</div><div class="menu-card-unit">200 г · + в корзину</div></div>
           <div class="menu-card-price">420 ₽</div>
         </div>
@@ -444,19 +453,19 @@ footer{background:var(--ink);padding:60px 48px 32px;border-top:1px solid rgba(25
 
       <!-- РЫБА НА МАНГАЛЕ -->
       <div class="menu-cat-hidden" data-cat="fish">
-        <div class="menu-card" onclick="addToCart('Барабуля черноморская', 240, '100 г')">
+        <div class="menu-card" onclick="addToCart(this, 'Барабуля черноморская', 240, '100 г')">
           <div class="menu-card-left"><div class="menu-card-name">Барабуля черноморская</div><div class="menu-card-unit">за 100 г · + в корзину</div></div>
           <div class="menu-card-price">240 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Дорадо', 320, '100 г')">
+        <div class="menu-card" onclick="addToCart(this, 'Дорадо', 320, '100 г')">
           <div class="menu-card-left"><div class="menu-card-name">Дорадо</div><div class="menu-card-unit">за 100 г · + в корзину</div></div>
           <div class="menu-card-price">320 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Семга', 580, '100 г')">
+        <div class="menu-card" onclick="addToCart(this, 'Семга', 580, '100 г')">
           <div class="menu-card-left"><div class="menu-card-name">Сёмга</div><div class="menu-card-unit">за 100 г · + в корзину</div></div>
           <div class="menu-card-price">580 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Форель радужная', 320, '100 г')">
+        <div class="menu-card" onclick="addToCart(this, 'Форель радужная', 320, '100 г')">
           <div class="menu-card-left"><div class="menu-card-name">Форель радужная</div><div class="menu-card-unit">за 100 г · + в корзину</div></div>
           <div class="menu-card-price">320 ₽</div>
         </div>
@@ -464,27 +473,27 @@ footer{background:var(--ink);padding:60px 48px 32px;border-top:1px solid rgba(25
 
       <!-- ОВОЩИ НА МАНГАЛЕ -->
       <div class="menu-cat-hidden" data-cat="garnir">
-        <div class="menu-card" onclick="addToCart('Аджапсандал', 160, '100 г')">
+        <div class="menu-card" onclick="addToCart(this, 'Аджапсандал', 160, '100 г')">
           <div class="menu-card-left"><div class="menu-card-name">Аджапсандал</div><div class="menu-card-unit">за 100 г · + в корзину</div></div>
           <div class="menu-card-price">160 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Баклажан на мангале', 170, '100 г')">
+        <div class="menu-card" onclick="addToCart(this, 'Баклажан на мангале', 170, '100 г')">
           <div class="menu-card-left"><div class="menu-card-name">Баклажан на мангале</div><div class="menu-card-unit">за 100 г · + в корзину</div></div>
           <div class="menu-card-price">170 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Картофель с салом', 130, '100 г')">
+        <div class="menu-card" onclick="addToCart(this, 'Картофель с салом', 130, '100 г')">
           <div class="menu-card-left"><div class="menu-card-name">Картофель с салом</div><div class="menu-card-unit">за 100 г · + в корзину</div></div>
           <div class="menu-card-price">130 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Перец на мангале', 190, '100 г')">
+        <div class="menu-card" onclick="addToCart(this, 'Перец на мангале', 190, '100 г')">
           <div class="menu-card-left"><div class="menu-card-name">Перец на мангале</div><div class="menu-card-unit">за 100 г · + в корзину</div></div>
           <div class="menu-card-price">190 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Помидор на мангале', 120, '100 г')">
+        <div class="menu-card" onclick="addToCart(this, 'Помидор на мангале', 120, '100 г')">
           <div class="menu-card-left"><div class="menu-card-name">Помидор на мангале</div><div class="menu-card-unit">за 100 г · + в корзину</div></div>
           <div class="menu-card-price">120 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Шампиньоны на мангале', 120, '100 г')">
+        <div class="menu-card" onclick="addToCart(this, 'Шампиньоны на мангале', 120, '100 г')">
           <div class="menu-card-left"><div class="menu-card-name">Шампиньоны на мангале</div><div class="menu-card-unit">за 100 г · + в корзину</div></div>
           <div class="menu-card-price">120 ₽</div>
         </div>
@@ -492,27 +501,27 @@ footer{background:var(--ink);padding:60px 48px 32px;border-top:1px solid rgba(25
 
       <!-- САЛАТЫ -->
       <div class="menu-cat-hidden" data-cat="salad">
-        <div class="menu-card" onclick="addToCart('Салат с адыгейским сыром', 360, 'порц')">
+        <div class="menu-card" onclick="addToCart(this, 'Салат с адыгейским сыром', 360, 'порц')">
           <div class="menu-card-left"><div class="menu-card-name">Салат с адыгейским сыром</div><div class="menu-card-unit">порц · + в корзину</div></div>
           <div class="menu-card-price">360 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Салат с хрустящим баклажаном', 420, 'порц')">
+        <div class="menu-card" onclick="addToCart(this, 'Салат с хрустящим баклажаном', 420, 'порц')">
           <div class="menu-card-left"><div class="menu-card-name">Салат с хрустящим баклажаном</div><div class="menu-card-unit">порц · + в корзину</div></div>
           <div class="menu-card-price">420 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Салат овощной с маслом оливковым', 320, 'порц')">
+        <div class="menu-card" onclick="addToCart(this, 'Салат овощной с маслом оливковым', 320, 'порц')">
           <div class="menu-card-left"><div class="menu-card-name">Салат овощной с маслом оливковым</div><div class="menu-card-unit">порц · + в корзину</div></div>
           <div class="menu-card-price">320 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Салат овощной со сметаной', 310, 'порц')">
+        <div class="menu-card" onclick="addToCart(this, 'Салат овощной со сметаной', 310, 'порц')">
           <div class="menu-card-left"><div class="menu-card-name">Салат овощной со сметаной</div><div class="menu-card-unit">порц · + в корзину</div></div>
           <div class="menu-card-price">310 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Салат Тбилиси', 650, 'порц')">
+        <div class="menu-card" onclick="addToCart(this, 'Салат Тбилиси', 650, 'порц')">
           <div class="menu-card-left"><div class="menu-card-name">Салат Тбилиси</div><div class="menu-card-unit">порц · + в корзину</div></div>
           <div class="menu-card-price">650 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Цезарь с курицей', 560, 'порц')">
+        <div class="menu-card" onclick="addToCart(this, 'Цезарь с курицей', 560, 'порц')">
           <div class="menu-card-left"><div class="menu-card-name">Цезарь с курицей</div><div class="menu-card-unit">порц · + в корзину</div></div>
           <div class="menu-card-price">560 ₽</div>
         </div>
@@ -520,23 +529,23 @@ footer{background:var(--ink);padding:60px 48px 32px;border-top:1px solid rgba(25
 
       <!-- ХАЧАПУРИ -->
       <div class="menu-cat-hidden" data-cat="hacha">
-        <div class="menu-card" onclick="addToCart('Хачапури на мангале', 390, 'порц')">
+        <div class="menu-card" onclick="addToCart(this, 'Хачапури на мангале', 390, 'порц')">
           <div class="menu-card-left"><div class="menu-card-name">Хачапури на мангале</div><div class="menu-card-unit">порц · + в корзину</div></div>
           <div class="menu-card-price">390 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Хачапури по-аджарски', 390, 'порц')">
+        <div class="menu-card" onclick="addToCart(this, 'Хачапури по-аджарски', 390, 'порц')">
           <div class="menu-card-left"><div class="menu-card-name">По-аджарски</div><div class="menu-card-unit">порц · + в корзину</div></div>
           <div class="menu-card-price">390 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Хачапури по имеретинский', 520, 'порц')">
+        <div class="menu-card" onclick="addToCart(this, 'Хачапури по имеретинский', 520, 'порц')">
           <div class="menu-card-left"><div class="menu-card-name">Имеретинский</div><div class="menu-card-unit">порц · + в корзину</div></div>
           <div class="menu-card-price">520 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Хачапури по мегрельски', 850, 'порц')">
+        <div class="menu-card" onclick="addToCart(this, 'Хачапури по мегрельски', 850, 'порц')">
           <div class="menu-card-left"><div class="menu-card-name">По мегрельски</div><div class="menu-card-unit">порц · + в корзину</div></div>
           <div class="menu-card-price">850 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Сыр на мангале', 180, '100 г')">
+        <div class="menu-card" onclick="addToCart(this, 'Сыр на мангале', 180, '100 г')">
           <div class="menu-card-left"><div class="menu-card-name">Сыр на мангале</div><div class="menu-card-unit">100 г · + в корзину</div></div>
           <div class="menu-card-price">180 ₽</div>
         </div>
@@ -544,15 +553,15 @@ footer{background:var(--ink);padding:60px 48px 32px;border-top:1px solid rgba(25
 
       <!-- ХИНКАЛИ -->
       <div class="menu-cat-hidden" data-cat="hinkali">
-        <div class="menu-card" onclick="addToCart('Хинкали говядина/свинина', 110, '1 шт')">
+        <div class="menu-card" onclick="addToCart(this, 'Хинкали говядина/свинина', 110, '1 шт')">
           <div class="menu-card-left"><div class="menu-card-name">Хинкали говядина/свинина</div><div class="menu-card-unit">1 шт · + в корзину</div></div>
           <div class="menu-card-price">110 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Хинкали с бараниной', 140, '1 шт')">
+        <div class="menu-card" onclick="addToCart(this, 'Хинкали с бараниной', 140, '1 шт')">
           <div class="menu-card-left"><div class="menu-card-name">Хинкали с бараниной</div><div class="menu-card-unit">1 шт · + в корзину</div></div>
           <div class="menu-card-price">140 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Хинкали телятина', 130, '1 шт')">
+        <div class="menu-card" onclick="addToCart(this, 'Хинкали телятина', 130, '1 шт')">
           <div class="menu-card-left"><div class="menu-card-name">Хинкали телятина</div><div class="menu-card-unit">1 шт · + в корзину</div></div>
           <div class="menu-card-price">130 ₽</div>
         </div>
@@ -560,23 +569,23 @@ footer{background:var(--ink);padding:60px 48px 32px;border-top:1px solid rgba(25
 
       <!-- СУПЫ -->
       <div class="menu-cat-hidden" data-cat="soup">
-        <div class="menu-card" onclick="addToCart('Окрошка на квасе', 350, 'порц')">
+        <div class="menu-card" onclick="addToCart(this, 'Окрошка на квасе', 350, 'порц')">
           <div class="menu-card-left"><div class="menu-card-name">Окрошка на квасе</div><div class="menu-card-unit">порц · + в корзину</div></div>
           <div class="menu-card-price">350 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Окрошка на кефире', 350, 'порц')">
+        <div class="menu-card" onclick="addToCart(this, 'Окрошка на кефире', 350, 'порц')">
           <div class="menu-card-left"><div class="menu-card-name">Окрошка на кефире</div><div class="menu-card-unit">порц · + в корзину</div></div>
           <div class="menu-card-price">350 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Солянка по-грузински', 650, 'порц')">
+        <div class="menu-card" onclick="addToCart(this, 'Солянка по-грузински', 650, 'порц')">
           <div class="menu-card-left"><div class="menu-card-name">Солянка по-грузински</div><div class="menu-card-unit">порц · + в корзину</div></div>
           <div class="menu-card-price">650 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Суп харчо', 420, 'порц')">
+        <div class="menu-card" onclick="addToCart(this, 'Суп харчо', 420, 'порц')">
           <div class="menu-card-left"><div class="menu-card-name">Харчо</div><div class="menu-card-unit">порц · + в корзину</div></div>
           <div class="menu-card-price">420 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Суп лапша', 350, 'порц')">
+        <div class="menu-card" onclick="addToCart(this, 'Суп лапша', 350, 'порц')">
           <div class="menu-card-left"><div class="menu-card-name">Суп лапша</div><div class="menu-card-unit">порц · + в корзину</div></div>
           <div class="menu-card-price">350 ₽</div>
         </div>
@@ -584,31 +593,31 @@ footer{background:var(--ink);padding:60px 48px 32px;border-top:1px solid rgba(25
 
       <!-- СОУСЫ -->
       <div class="menu-cat-hidden" data-cat="sauce">
-        <div class="menu-card" onclick="addToCart('Соус Аджика', 100, '')">
+        <div class="menu-card" onclick="addToCart(this, 'Соус Аджика', 100, '')">
           <div class="menu-card-left"><div class="menu-card-name">Аджика</div><div class="menu-card-unit">+ в корзину</div></div>
           <div class="menu-card-price">100 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Кетчуп', 100, '')">
+        <div class="menu-card" onclick="addToCart(this, 'Кетчуп', 100, '')">
           <div class="menu-card-left"><div class="menu-card-name">Кетчуп</div><div class="menu-card-unit">+ в корзину</div></div>
           <div class="menu-card-price">100 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Соус Наршараб', 100, '')">
+        <div class="menu-card" onclick="addToCart(this, 'Соус Наршараб', 100, '')">
           <div class="menu-card-left"><div class="menu-card-name">Наршараб</div><div class="menu-card-unit">+ в корзину</div></div>
           <div class="menu-card-price">100 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Соус Грузинский', 100, '')">
+        <div class="menu-card" onclick="addToCart(this, 'Соус Грузинский', 100, '')">
           <div class="menu-card-left"><div class="menu-card-name">Грузинский</div><div class="menu-card-unit">+ в корзину</div></div>
           <div class="menu-card-price">100 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Соус Сырный', 100, '')">
+        <div class="menu-card" onclick="addToCart(this, 'Соус Сырный', 100, '')">
           <div class="menu-card-left"><div class="menu-card-name">Сырный</div><div class="menu-card-unit">+ в корзину</div></div>
           <div class="menu-card-price">100 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Соус Чесночный', 100, '')">
+        <div class="menu-card" onclick="addToCart(this, 'Соус Чесночный', 100, '')">
           <div class="menu-card-left"><div class="menu-card-name">Чесночный</div><div class="menu-card-unit">+ в корзину</div></div>
           <div class="menu-card-price">100 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Ткемали', 100, '')">
+        <div class="menu-card" onclick="addToCart(this, 'Ткемали', 100, '')">
           <div class="menu-card-left"><div class="menu-card-name">Ткемали</div><div class="menu-card-unit">+ в корзину</div></div>
           <div class="menu-card-price">100 ₽</div>
         </div>
@@ -616,15 +625,15 @@ footer{background:var(--ink);padding:60px 48px 32px;border-top:1px solid rgba(25
 
       <!-- БУРГЕР/ШАУРМА -->
       <div class="menu-cat-hidden" data-cat="street">
-        <div class="menu-card" onclick="addToCart('Шаурма с курицей', 380, 'порц')">
+        <div class="menu-card" onclick="addToCart(this, 'Шаурма с курицей', 380, 'порц')">
           <div class="menu-card-left"><div class="menu-card-name">Шаурма с курицей</div><div class="menu-card-unit">порц · + в корзину</div></div>
           <div class="menu-card-price">380 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Шаурма со свининой', 410, 'порц')">
+        <div class="menu-card" onclick="addToCart(this, 'Шаурма со свининой', 410, 'порц')">
           <div class="menu-card-left"><div class="menu-card-name">Шаурма со свининой</div><div class="menu-card-unit">порц · + в корзину</div></div>
           <div class="menu-card-price">410 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Бургер', 490, 'порц')">
+        <div class="menu-card" onclick="addToCart(this, 'Бургер', 490, 'порц')">
           <div class="menu-card-left"><div class="menu-card-name">Бургер</div><div class="menu-card-unit">порц · + в корзину</div></div>
           <div class="menu-card-price">490 ₽</div>
         </div>
@@ -633,23 +642,23 @@ footer{background:var(--ink);padding:60px 48px 32px;border-top:1px solid rgba(25
 
       <!-- БЛЮДА ВО ФРИТЮРЕ -->
       <div class="menu-cat-hidden" data-cat="friture">
-        <div class="menu-card" onclick="addToCart('Картофель по-деревенски', 190, 'порц')">
+        <div class="menu-card" onclick="addToCart(this, 'Картофель по-деревенски', 190, 'порц')">
           <div class="menu-card-left"><div class="menu-card-name">Картофель по-деревенски</div><div class="menu-card-unit">порц · + в корзину</div></div>
           <div class="menu-card-price">190 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Картофель фри', 220, 'порц')">
+        <div class="menu-card" onclick="addToCart(this, 'Картофель фри', 220, 'порц')">
           <div class="menu-card-left"><div class="menu-card-name">Картофель фри</div><div class="menu-card-unit">порц · + в корзину</div></div>
           <div class="menu-card-price">220 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Луковые кольца', 210, 'порц')">
+        <div class="menu-card" onclick="addToCart(this, 'Луковые кольца', 210, 'порц')">
           <div class="menu-card-left"><div class="menu-card-name">Луковые кольца</div><div class="menu-card-unit">порц · + в корзину</div></div>
           <div class="menu-card-price">210 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Наггетсы', 240, 'порц')">
+        <div class="menu-card" onclick="addToCart(this, 'Наггетсы', 240, 'порц')">
           <div class="menu-card-left"><div class="menu-card-name">Наггетсы</div><div class="menu-card-unit">порц · + в корзину</div></div>
           <div class="menu-card-price">240 ₽</div>
         </div>
-        <div class="menu-card" onclick="addToCart('Сырные палочки', 330, 'порц')">
+        <div class="menu-card" onclick="addToCart(this, 'Сырные палочки', 330, 'порц')">
           <div class="menu-card-left"><div class="menu-card-name">Сырные палочки</div><div class="menu-card-unit">порц · + в корзину</div></div>
           <div class="menu-card-price">330 ₽</div>
         </div>
@@ -659,39 +668,6 @@ footer{background:var(--ink);padding:60px 48px 32px;border-top:1px solid rgba(25
 </section>
 
 
-<!-- REAL PHOTO GALLERY -->
-<section style="padding:0;background:#0C0C0C;">
-  <div style="max-width:1160px;margin:0 auto;padding:60px 48px 40px;">
-    <div style="font-size:9px;letter-spacing:6px;text-transform:uppercase;color:#C9A84C;font-weight:600;margin-bottom:16px;">Наша кухня</div>
-    <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(32px,4vw,52px);color:#FAFAF8;margin-bottom:40px;">Живой огонь — <em style="font-style:italic;color:#E4C76B;">честный вкус</em></h2>
-  </div>
-  <div id="kitchenGrid" style="display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:340px 340px;gap:3px;max-width:1400px;margin:0 auto;">
-    <div class="kitchen-cell kitchen-cell-big" style="grid-row:span 2;overflow:hidden;position:relative;">
-      <img src="images/img04.jpg" style="width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .6s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
-      <div style="position:absolute;bottom:0;left:0;right:0;padding:24px 28px;background:linear-gradient(to top,rgba(12,12,12,.85),transparent);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#C9A84C;font-weight:600;">Мясо на мангале · живой огонь</div>
-    </div>
-    <div class="kitchen-cell" style="overflow:hidden;position:relative;">
-      <img src="images/img05.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .6s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
-      <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(to top,rgba(12,12,12,.8),transparent);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#C9A84C;font-weight:600;">Люля-кебаб</div>
-    </div>
-    <div class="kitchen-cell" style="overflow:hidden;position:relative;">
-      <img src="images/img06.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .6s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
-      <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(to top,rgba(12,12,12,.8),transparent);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#C9A84C;font-weight:600;">Рыба на мангале</div>
-    </div>
-    <div class="kitchen-cell" style="overflow:hidden;position:relative;">
-      <img src="images/img07.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .6s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
-      <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(to top,rgba(12,12,12,.8),transparent);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#C9A84C;font-weight:600;">Хачапури по-аджарски</div>
-    </div>
-    <div class="kitchen-cell" style="overflow:hidden;position:relative;">
-      <img src="images/img08.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .6s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
-      <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(to top,rgba(12,12,12,.8),transparent);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#C9A84C;font-weight:600;">Хачапури имеретинский</div>
-    </div>
-  </div>
-  <div style="max-width:1160px;margin:0 auto;padding:40px 48px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.06);margin-top:3px;">
-    <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:#E8E0D0;max-width:480px;line-height:1.5;">«Огонь — основа всего. Остальное — дополнение.»</div>
-    <div style="font-size:10px;letter-spacing:5px;text-transform:uppercase;color:#C9A84C;font-weight:600;white-space:nowrap;">Тепличная 17В · Сочи</div>
-  </div>
-</section>
 <!-- ORDER -->
 <section id="order">
   <div class="container">
@@ -774,6 +750,39 @@ footer{background:var(--ink);padding:60px 48px 32px;border-top:1px solid rgba(25
   </div>
 </section>
 
+<!-- REAL PHOTO GALLERY -->
+<section style="padding:0;background:#0C0C0C;">
+  <div style="max-width:1160px;margin:0 auto;padding:60px 48px 40px;">
+    <div style="font-size:9px;letter-spacing:6px;text-transform:uppercase;color:#C9A84C;font-weight:600;margin-bottom:16px;">Наша кухня</div>
+    <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(32px,4vw,52px);color:#FAFAF8;margin-bottom:40px;">Будет <em style="font-style:italic;color:#E4C76B;">ЖАРОЧНО!</em></h2>
+  </div>
+  <div id="kitchenGrid" style="display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:340px 340px;gap:3px;max-width:1400px;margin:0 auto;">
+    <div class="kitchen-cell kitchen-cell-big" style="grid-row:span 2;overflow:hidden;position:relative;">
+      <img src="images/img04.jpg" style="width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .6s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:24px 28px;background:linear-gradient(to top,rgba(12,12,12,.85),transparent);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#C9A84C;font-weight:600;">Мясо на мангале · живой огонь</div>
+    </div>
+    <div class="kitchen-cell" style="overflow:hidden;position:relative;">
+      <img src="images/img05.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .6s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(to top,rgba(12,12,12,.8),transparent);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#C9A84C;font-weight:600;">Люля-кебаб</div>
+    </div>
+    <div class="kitchen-cell" style="overflow:hidden;position:relative;">
+      <img src="images/img06.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .6s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(to top,rgba(12,12,12,.8),transparent);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#C9A84C;font-weight:600;">Рыба на мангале</div>
+    </div>
+    <div class="kitchen-cell" style="overflow:hidden;position:relative;">
+      <img src="images/img07.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .6s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(to top,rgba(12,12,12,.8),transparent);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#C9A84C;font-weight:600;">Хачапури по-аджарски</div>
+    </div>
+    <div class="kitchen-cell" style="overflow:hidden;position:relative;">
+      <img src="images/img08.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .6s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(to top,rgba(12,12,12,.8),transparent);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#C9A84C;font-weight:600;">Хачапури имеретинский</div>
+    </div>
+  </div>
+  <div style="max-width:1160px;margin:0 auto;padding:40px 48px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.06);margin-top:3px;">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:#E8E0D0;max-width:480px;line-height:1.5;">«Огонь — основа всего. Остальное — дополнение.»</div>
+    <div style="font-size:10px;letter-spacing:5px;text-transform:uppercase;color:#C9A84C;font-weight:600;white-space:nowrap;">Тепличная 17В · Сочи</div>
+  </div>
+</section>
 <!-- PROMOS -->
 <section id="promos">
   <div class="container">
@@ -789,7 +798,7 @@ footer{background:var(--ink);padding:60px 48px 32px;border-top:1px solid rgba(25
         <div class="promo-desc">Барабуля и сарган черноморские — свежий улов на мангале. Попробуйте то, что большинство кафе не предлагает вовсе.</div>
       </div>
     </div>
-    <p style="font-size:12px;color:var(--mist);margin-top:32px;text-align:center;font-weight:300;">Следите за новыми акциями в нашем WhatsApp: <a href="tel:+79184015221" style="color:var(--gold);">+7 (918) 401-52-21</a></p>
+    <p style="font-size:12px;color:var(--mist);margin-top:32px;text-align:center;font-weight:300;">Следите за новыми акциями в нашем WhatsApp: <a href="https://wa.me/79184015221" target="_blank" style="color:var(--gold);">+7 (918) 401-52-21</a></p>
   </div>
 </section>
 
@@ -946,6 +955,9 @@ footer{background:var(--ink);padding:60px 48px 32px;border-top:1px solid rgba(25
       <button class="btn-primary" style="width:100%;background:#229ED9;display:flex;align-items:center;justify-content:center;gap:12px;font-size:14px;" onclick="sendViaMessenger('telegram')">
         <span style="font-size:22px;">✈️</span> Отправить в Telegram
       </button>
+      <button class="btn-primary" style="width:100%;background:#7B61FF;display:flex;align-items:center;justify-content:center;gap:12px;font-size:14px;" onclick="sendViaMessenger('max')">
+        <span style="font-size:22px;">💠</span> Отправить в MAX
+      </button>
       <button class="btn-ghost" style="width:100%;margin-top:4px;" onclick="closeMessengerModal()">Отмена</button>
     </div>
   </div>
@@ -966,13 +978,27 @@ footer{background:var(--ink);padding:60px 48px 32px;border-top:1px solid rgba(25
 // ── CART ──
 let cart = [];
 
-function addToCart(name, price, unit) {
+function addToCart(cardEl, name, price, unit) {
   const existing = cart.find(i => i.name === name);
   if (existing) { existing.qty++; }
   else { cart.push({name, price, unit, qty:1}); }
   renderCart();
-  // Scroll to order
-  document.getElementById('order').scrollIntoView({behavior:'smooth'});
+
+  // Визуальная галочка на карточке блюда
+  if (cardEl) {
+    let badge = cardEl.querySelector('.cart-check-badge');
+    if (!badge) {
+      badge = document.createElement('div');
+      badge.className = 'cart-check-badge';
+      badge.textContent = '✓';
+      cardEl.appendChild(badge);
+    }
+    badge.classList.remove('show');
+    void badge.offsetWidth; // restart animation if clicked repeatedly
+    badge.classList.add('show');
+    clearTimeout(cardEl._checkTimeout);
+    cardEl._checkTimeout = setTimeout(() => badge.classList.remove('show'), 1100);
+  }
 }
 
 function removeFromCart(idx) {
@@ -1097,13 +1123,17 @@ function submitOrder() {
 
 function sendViaMessenger(type) {
   const msg = document.getElementById('messengerModal').dataset.msg;
-  const phone = '${phone}';
+  const RESTAURANT_PHONE = '79184015221'; // +7 (918) 401-52-21 — единый номер ресторана
 
   let url = '';
   if (type === 'whatsapp') {
-    url = `https://wa.me/${phone}?text=${msg}`;
+    url = `https://wa.me/${RESTAURANT_PHONE}?text=${msg}`;
   } else if (type === 'telegram') {
-    url = `https://t.me/zharovnyaMyasoDaRyba?text=${msg}`;
+    url = `https://t.me/+${RESTAURANT_PHONE}?text=${msg}`;
+  } else if (type === 'max') {
+    // ⚠️ MAX не поддерживает переход по номеру телефона — нужна личная/бизнес-ссылка вида https://max.ru/u/XXXXXXX
+    // Получить: приложение MAX → Профиль → значок QR-кода → «Поделиться» → скопировать ссылку. Подставьте её ниже вместо MAX_PROFILE_URL.
+    url = 'https://max.ru/u/MAX_PROFILE_URL';
   }
 
   window.open(url, '_blank');
