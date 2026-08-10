@@ -229,6 +229,13 @@
   /* ИСКРЫ */
   .sparks-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; }
   
+  /* ИНДИКАТОР РАБОТЫ */
+  .status-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.85rem; border: 1px solid var(--border-light); font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.3s; white-space: nowrap; }
+  .status-badge.open { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 15px rgba(255, 84, 0, 0.2); animation: pulse-cta 2.4s ease-out infinite; }
+  .status-badge.closed { border-color: var(--silver-dim); color: var(--muted); }
+  .status-badge .status-dot { width: 8px; height: 8px; border-radius: 50%; background-color: var(--muted); transition: background-color 0.3s; }
+  .status-badge.open .status-dot { background-color: var(--accent); }
+  
   /* МОДАЛЬНЫЕ ОКНА */
   .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.85); z-index: 2000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); padding: 1rem; }
   .modal-overlay.show { display: flex; }
@@ -320,7 +327,12 @@
         <a href="#contacts" class="nav-link">Контакты</a>
       </nav>
       
-      <div class="flex items-center gap-5">
+      <div class="flex items-center gap-3 md:gap-5">
+        <div id="openStatus" class="status-badge closed">
+          <span class="status-dot"></span>
+          <span class="status-text">ЗАКРЫТО</span>
+          <span class="status-time text-[var(--muted)] hidden md:inline"></span>
+        </div>
         <a href="#booking" class="hidden sm:inline-block font-heading text-xs tracking-[0.2em] uppercase text-black bg-[var(--silver)] px-5 py-2.5 hover:bg-white transition-colors">
           Заказать
         </a>
@@ -989,10 +1001,10 @@
             Живой огонь, настоящее мясо и рыба с Чёрного моря. Доставка по Сочи или самовывоз — на ваш выбор. Сочи, Тепличная 17В.
           </p>
           <div class="flex gap-3">
-            <a href="https://wa.me/79184015221" class="w-10 h-10 border border-[var(--border-light)] hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:text-black transition-all flex items-center justify-center">
+            <a href="https://wa.me/79182091616" class="w-10 h-10 border border-[var(--border-light)] hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:text-black transition-all flex items-center justify-center">
               <i class="fab fa-whatsapp text-sm"></i>
             </a>
-            <a href="tel:+79184015221" class="w-10 h-10 border border-[var(--border-light)] hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:text-black transition-all flex items-center justify-center">
+            <a href="tel:+79182091616" class="w-10 h-10 border border-[var(--border-light)] hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:text-black transition-all flex items-center justify-center">
               <i class="fas fa-phone text-sm"></i>
             </a>
           </div>
@@ -1002,7 +1014,7 @@
           <h5 class="font-mono text-[10px] text-[var(--accent)] tracking-[0.2em] uppercase mb-4">Контакты</h5>
           <ul class="space-y-3 text-sm">
             <li class="flex items-center gap-2 text-[var(--fg-dim)]"><i class="fas fa-map-marker-alt text-[var(--accent)]"></i> Тепличная 17В, Сочи</li>
-            <li class="flex items-center gap-2 text-[var(--fg-dim)]"><i class="fas fa-phone text-[var(--accent)]"></i> <a href="tel:+79184015221">+7 (918) 401-52-21</a></li>
+            <li class="flex items-center gap-2 text-[var(--fg-dim)]"><i class="fas fa-phone text-[var(--accent)]"></i> <a href="tel:+79182091616">+7 (918) 209-16-16</a></li>
             <li class="flex items-center gap-2 text-[var(--fg-dim)]"><i class="fas fa-clock text-[var(--accent)]"></i> Ежедневно 10:00–22:00</li>
           </ul>
         </div>
@@ -1032,9 +1044,10 @@
     <div class="bg-black/90 backdrop-blur-md border-t border-[var(--accent)]/30">
       <div class="max-w-[1600px] mx-auto px-6 lg:px-10 py-4 flex items-center justify-between gap-4">
         <div class="flex items-center gap-5">
-          <div class="hidden sm:flex items-center gap-2 font-mono text-[11px] text-[var(--accent)] tracking-[0.2em]">
-            <span class="rec-dot w-2 h-2 bg-[var(--accent)] rounded-full"></span>
-            <span>МАНГАЛ УЖЕ ГОРЯЧИЙ</span>
+          <div id="openStatusSticky" class="status-badge closed">
+            <span class="status-dot"></span>
+            <span class="status-text">ЗАКРЫТО</span>
+            <span class="status-time text-[var(--muted)] hidden sm:inline"></span>
           </div>
           <div>
             <div class="font-display text-lg md:text-2xl leading-none">ЗАКАЗАТЬ ДОСТАВКУ</div>
@@ -1074,7 +1087,7 @@
       <button class="modal-close" onclick="closeModal()">✕</button>
       <i class="fas fa-fire-flame-curved text-5xl mb-4 text-[var(--accent)]"></i>
       <div class="font-display text-3xl mb-2">ЗАКАЗ ПРИНЯТ!</div>
-      <div class="text-[var(--fg-dim)] text-sm mb-8">Мы получили ваш заказ и скоро перезвоним для подтверждения.<br><br>Или звоните сами: <strong class="text-[var(--accent)]">+7 (918) 401-52-21</strong></div>
+      <div class="text-[var(--fg-dim)] text-sm mb-8">Мы получили ваш заказ и скоро перезвоним для подтверждения.<br><br>Или звоните сами: <strong class="text-[var(--accent)]">+7 (918) 209-16-16</strong></div>
       <button class="w-full bg-[var(--accent)] text-black py-4 font-heading text-sm tracking-[0.2em] uppercase hover:bg-[var(--accent-bright)] transition-colors" onclick="closeModal()">Отлично, жду!</button>
     </div>
   </div>
@@ -1136,6 +1149,60 @@
       requestAnimationFrame(animateSparks); 
     }
     animateSparks();
+
+    /* СЧЕТЧИК ВРЕМЕНИ РАБОТЫ */
+    function updateOpenStatus() {
+        const now = new Date();
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
+        const currentSeconds = hours * 3600 + minutes * 60 + seconds;
+        
+        const openTime = 10 * 3600; // 10:00
+        const closeTime = 22 * 3600; // 22:00
+        
+        const badges = [document.getElementById('openStatus'), document.getElementById('openStatusSticky')];
+        
+        let targetSeconds, statusText, isOpen, targetTimeStr;
+        
+        if (currentSeconds >= openTime && currentSeconds < closeTime) {
+            isOpen = true;
+            targetSeconds = closeTime - currentSeconds;
+            statusText = 'ОТКРЫТО';
+            targetTimeStr = 'до 22:00';
+        } else if (currentSeconds < openTime) {
+            isOpen = false;
+            targetSeconds = openTime - currentSeconds;
+            statusText = 'ЗАКРЫТО';
+            targetTimeStr = 'до 10:00';
+        } else {
+            isOpen = false;
+            targetSeconds = (24 * 3600 - currentSeconds) + openTime;
+            statusText = 'ЗАКРЫТО';
+            targetTimeStr = 'до 10:00';
+        }
+        
+        const h = Math.floor(targetSeconds / 3600);
+        const m = Math.floor((targetSeconds % 3600) / 60);
+        const s = Math.floor(targetSeconds % 60);
+        const timeStr = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+        
+        badges.forEach(badge => {
+            if (!badge) return;
+            badge.querySelector('.status-text').textContent = statusText;
+            badge.querySelector('.status-time').textContent = `${targetTimeStr} (${timeStr})`;
+            
+            if (isOpen) {
+                badge.classList.add('open');
+                badge.classList.remove('closed');
+            } else {
+                badge.classList.add('closed');
+                badge.classList.remove('open');
+            }
+        });
+    }
+    setInterval(updateOpenStatus, 1000);
+    updateOpenStatus();
 
     /* HERO REEL */
     const frames = document.querySelectorAll('.reel-frame');
@@ -1304,7 +1371,7 @@
       if (type === 'delivery') {
         document.getElementById('tabDelivery').classList.add('active');
         fields.style.display = 'block';
-        note.innerHTML = '<i class="fas fa-truck-fast mr-1"></i> Стоимость доставки уточняйте по телефону +7 (918) 401-52-21';
+        note.innerHTML = '<i class="fas fa-truck-fast mr-1"></i> Стоимость доставки уточняйте по телефону +7 (918) 209-16-16';
       } else if (type === 'pickup') {
         document.getElementById('tabPickup').classList.add('active');
         fields.style.display = 'none';
@@ -1361,7 +1428,7 @@
 
     function sendViaMessenger(type) {
       const msg = document.getElementById('messengerModal').dataset.msg;
-      const phone = '79184015221'; // Номер для WhatsApp
+      const phone = '79182091616'; // Номер для WhatsApp
       let url = '';
       if (type === 'whatsapp') { 
         url = `https://wa.me/${phone}?text=${msg}`; 
