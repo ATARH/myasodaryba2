@@ -229,12 +229,26 @@
   /* ИСКРЫ */
   .sparks-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; }
   
-  /* ИНДИКАТОР РАБОТЫ */
+  /* ИНДИКАТОР РАБОТЫ (ОТКРЫТО/ЗАКРЫТО) */
   .status-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.85rem; border: 1px solid var(--border-light); font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.3s; white-space: nowrap; }
-  .status-badge.open { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 15px rgba(255, 84, 0, 0.2); animation: pulse-cta 2.4s ease-out infinite; }
-  .status-badge.closed { border-color: var(--silver-dim); color: var(--muted); }
-  .status-badge .status-dot { width: 8px; height: 8px; border-radius: 50%; background-color: var(--muted); transition: background-color 0.3s; }
-  .status-badge.open .status-dot { background-color: var(--accent); }
+  .status-badge .status-dot { width: 8px; height: 8px; border-radius: 50%; background-color: var(--muted); transition: all 0.3s; }
+  .status-badge .status-text { font-weight: 700; }
+  .status-badge .status-time { color: var(--muted); }
+
+  .status-badge.open { border-color: #00FF00; box-shadow: 0 0 15px rgba(0, 255, 0, 0.3); animation: pulse-status-open 2s ease-out infinite; }
+  .status-badge.open .status-dot { background-color: #00FF00; box-shadow: 0 0 8px #00FF00; }
+  .status-badge.open .status-text { color: #00FF00; text-shadow: 0 0 8px rgba(0, 255, 0, 0.6); }
+  .status-badge.open .status-time { color: #aaffaa; }
+
+  .status-badge.closed { border-color: #FF3333; }
+  .status-badge.closed .status-dot { background-color: #FF3333; box-shadow: 0 0 8px #FF3333; }
+  .status-badge.closed .status-text { color: #FF3333; text-shadow: 0 0 8px rgba(255, 0, 0, 0.6); }
+  .status-badge.closed .status-time { color: var(--muted); }
+
+  @keyframes pulse-status-open {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.6), 0 0 15px rgba(0, 255, 0, 0.2); }
+    50% { box-shadow: 0 0 0 6px rgba(0, 255, 0, 0), 0 0 15px rgba(0, 255, 0, 0.2); }
+  }
   
   /* МОДАЛЬНЫЕ ОКНА */
   .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.85); z-index: 2000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); padding: 1rem; }
@@ -331,7 +345,7 @@
         <div id="openStatus" class="status-badge closed">
           <span class="status-dot"></span>
           <span class="status-text">ЗАКРЫТО</span>
-          <span class="status-time text-[var(--muted)] hidden md:inline"></span>
+          <span class="status-time hidden md:inline"></span>
         </div>
         <a href="#booking" class="hidden sm:inline-block font-heading text-xs tracking-[0.2em] uppercase text-black bg-[var(--silver)] px-5 py-2.5 hover:bg-white transition-colors">
           Заказать
@@ -426,7 +440,7 @@
   <!-- STATS -->
   <section class="border-y border-[var(--border)] bg-[var(--bg-darker)] relative overflow-hidden">
     <div class="max-w-[1600px] mx-auto px-6 lg:px-10 py-16 lg:py-20">
-      <div class="reveal-stagger grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-6">
+      <div class="reveal-stagger grid grid-cols-2 lg:grid-cols-3 gap-y-10 gap-x-6 max-w-[1200px] mx-auto">
         <div class="border-l border-[var(--border-light)] pl-6">
           <div class="font-display text-5xl md:text-7xl text-[var(--fg)] number-display" data-count="30">0</div>
           <div class="font-mono text-[11px] text-[var(--muted)] tracking-[0.2em] uppercase mt-2">Позиций меню</div>
@@ -434,10 +448,6 @@
         <div class="border-l border-[var(--border-light)] pl-6">
           <div class="font-display text-5xl md:text-7xl text-[var(--accent)] number-display" data-count="100">0</div>
           <div class="font-mono text-[11px] text-[var(--muted)] tracking-[0.2em] uppercase mt-2">% Живой огонь</div>
-        </div>
-        <div class="border-l border-[var(--border-light)] pl-6">
-          <div class="font-display text-5xl md:text-7xl text-[var(--fg)]">10:00</div>
-          <div class="font-mono text-[11px] text-[var(--muted)] tracking-[0.2em] uppercase mt-2">Открываемся</div>
         </div>
         <div class="border-l border-[var(--border-light)] pl-6">
           <div class="font-display text-5xl md:text-7xl text-[var(--fg)]">4.8</div>
@@ -886,8 +896,11 @@
           </h2>
         </div>
         <div class="lg:col-span-4 lg:col-start-9 flex flex-col justify-end">
+          <a href="https://yandex.ru/maps/org/zharochnaya_myasodaryba/132382563576/reviews/" target="_blank" class="inline-flex items-center gap-2 text-[var(--accent)] hover:text-[var(--accent-bright)] transition-colors mb-5 font-heading text-sm tracking-wider uppercase font-bold">
+            4.8 на Яндекс Картах. Читать отзывы →
+          </a>
           <p class="text-[var(--fg-dim)] text-base leading-relaxed mb-5">
-            4.8 на Яндекс Картах. Читайте отзывы наших гостей и оставьте свой — это помогает нам становиться лучше.
+            Оставьте свой — это помогает нам становиться лучше.
           </p>
         </div>
       </div>
@@ -1047,7 +1060,7 @@
           <div id="openStatusSticky" class="status-badge closed">
             <span class="status-dot"></span>
             <span class="status-text">ЗАКРЫТО</span>
-            <span class="status-time text-[var(--muted)] hidden sm:inline"></span>
+            <span class="status-time hidden sm:inline"></span>
           </div>
           <div>
             <div class="font-display text-lg md:text-2xl leading-none">ЗАКАЗАТЬ ДОСТАВКУ</div>
@@ -1649,4 +1662,4 @@
     }, { passive: true });
   </script>
 </body>
-</html>
+                    </html>
