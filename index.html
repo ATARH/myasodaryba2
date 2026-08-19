@@ -1014,8 +1014,8 @@
             Живой огонь, настоящее мясо и рыба с Чёрного моря. Доставка по Сочи или самовывоз — на ваш выбор. Сочи, Тепличная 17В.
           </p>
           <div class="flex gap-3">
-            <a href="https://wa.me/79182091616" class="w-10 h-10 border border-[var(--border-light)] hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:text-black transition-all flex items-center justify-center">
-              <i class="fab fa-whatsapp text-sm"></i>
+            <a href="https://t.me/miasodaryba_bot" target="_blank" class="w-10 h-10 border border-[var(--border-light)] hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:text-black transition-all flex items-center justify-center">
+              <i class="fab fa-telegram text-sm"></i>
             </a>
             <a href="tel:+79182091616" class="w-10 h-10 border border-[var(--border-light)] hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:text-black transition-all flex items-center justify-center">
               <i class="fas fa-phone text-sm"></i>
@@ -1075,32 +1075,13 @@
     </div>
   </div>
 
-  <!-- MESSENGER MODAL -->
-  <div class="modal-overlay" id="messengerModal">
-    <div class="modal">
-      <button class="modal-close" onclick="closeMessengerModal()">✕</button>
-      <i class="fas fa-comments text-5xl mb-4 text-[var(--accent)]"></i>
-      <div class="font-display text-3xl mb-2">КАК ОТПРАВИТЬ?</div>
-      <div class="text-[var(--fg-dim)] text-sm mb-8">Выберите мессенджер — мы получим ваш заказ и перезвоним для подтверждения.</div>
-      <div class="flex flex-col gap-3">
-        <button class="w-full bg-[#25D366] text-black py-4 font-heading text-sm tracking-[0.2em] uppercase hover:opacity-90 transition-opacity flex items-center justify-center gap-3" onclick="sendViaMessenger('whatsapp')">
-          <i class="fab fa-whatsapp text-xl"></i> Отправить в WhatsApp
-        </button>
-        <button class="w-full bg-[#229ED9] text-white py-4 font-heading text-sm tracking-[0.2em] uppercase hover:opacity-90 transition-opacity flex items-center justify-center gap-3" onclick="sendViaMessenger('telegram')">
-          <i class="fab fa-telegram text-xl"></i> Отправить в Telegram
-        </button>
-        <button class="w-full border border-[var(--border-light)] text-[var(--muted)] py-3 font-heading text-xs tracking-[0.2em] uppercase hover:text-[var(--fg)] mt-1" onclick="closeMessengerModal()">Отмена</button>
-      </div>
-    </div>
-  </div>
-
   <!-- SUCCESS MODAL -->
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal">
       <button class="modal-close" onclick="closeModal()">✕</button>
-      <i class="fas fa-fire-flame-curved text-5xl mb-4 text-[var(--accent)]"></i>
-      <div class="font-display text-3xl mb-2">ЗАКАЗ ПРИНЯТ!</div>
-      <div class="text-[var(--fg-dim)] text-sm mb-8">Мы получили ваш заказ и скоро перезвоним для подтверждения.<br><br>Или звоните сами: <strong class="text-[var(--accent)]">+7 (918) 209-16-16</strong></div>
+      <i class="fas fa-paper-plane text-5xl mb-4 text-[var(--accent)]"></i>
+      <div class="font-display text-3xl mb-2">ПЕРЕХОД В TELEGRAM</div>
+      <div class="text-[var(--fg-dim)] text-sm mb-8">Мы открыли нашего бота в Telegram с готовым текстом заказа. Просто нажмите "Отправить" в Telegram, и мы сразу его получим!<br><br>Или звоните сами: <strong class="text-[var(--accent)]">+7 (918) 209-16-16</strong></div>
       <button class="w-full bg-[var(--accent)] text-black py-4 font-heading text-sm tracking-[0.2em] uppercase hover:bg-[var(--accent-bright)] transition-colors" onclick="closeModal()">Отлично, жду!</button>
     </div>
   </div>
@@ -1398,7 +1379,7 @@
       }
     }
 
-    /* ── SUBMIT ORDER ── */
+    /* ── SUBMIT ORDER (TELEGRAM BOT INTEGRATION) ── */
     function submitOrder() {
       const name = document.getElementById('fname').value.trim();
       const phone = document.getElementById('fphone').value.trim();
@@ -1421,42 +1402,38 @@
       const isPreorder = document.getElementById('tabPreorder').classList.contains('active');
       let orderType = isDelivery ? 'Доставка' : isPickup ? 'Самовывоз' : 'Предзаказ';
 
-      const items = cart.map(i => `• ${i.name}${i.qty > 1 ? ' ×' + i.qty : ''} — ${i.price * i.qty} ₽`).join('%0A');
+      const items = cart.map(i => `• ${i.name}${i.qty > 1 ? ' ×' + i.qty : ''} — ${i.price * i.qty} ₽`).join('\n');
       const total = cart.reduce((a, i) => a + i.price * i.qty, 0);
 
-      let msg = `НОВЫЙ ЗАКАЗ - ЖАРОЧНАЯ МясоДаРыба%0A%0A`;
-      msg += `Имя: ${name}%0A`;
-      msg += `Телефон: ${phone}%0A`;
-      msg += `Тип: ${orderType}%0A`;
-      if (address) msg += `Адрес: ${address}%0A`;
-      if (arrival) msg += `Время приезда: ${arrival}%0A`;
-      msg += `Оплата: ${pay}%0A%0A`;
-      msg += `Состав заказа:%0A${items}%0A%0A`;
+      let msg = `🔥 НОВЫЙ ЗАКАЗ - ЖАРОЧНАЯ МясоДаРыба\n\n`;
+      msg += `Имя: ${name}\n`;
+      msg += `Телефон: ${phone}\n`;
+      msg += `Тип: ${orderType}\n`;
+      if (address) msg += `Адрес: ${address}\n`;
+      if (arrival) msg += `Время приезда: ${arrival}\n`;
+      msg += `Оплата: ${pay}\n\n`;
+      msg += `Состав заказа:\n${items}\n\n`;
       msg += `Итого: ${total.toLocaleString('ru')} ₽`;
-      if (comment) msg += `%0A%0AКомментарий: ${comment}`;
+      if (comment) msg += `\n\nКомментарий: ${comment}`;
 
-      document.getElementById('messengerModal').classList.add('show');
-      document.getElementById('messengerModal').dataset.msg = msg;
-    }
-
-    function sendViaMessenger(type) {
-      const msg = document.getElementById('messengerModal').dataset.msg;
-      const phone = '79182091616'; // Номер для WhatsApp
-      let url = '';
-      if (type === 'whatsapp') { 
-        url = `https://wa.me/${phone}?text=${msg}`; 
-      } else if (type === 'telegram') { 
-        url = `https://t.me/zharovnyaMyasoDaRyba?text=${msg}`; 
-      }
-      window.open(url, '_blank');
-      document.getElementById('messengerModal').classList.remove('show');
+      // Прямая ссылка на твоего бота с предзаполненным текстом
+      const telegramUrl = `https://t.me/miasodaryba_bot?text=${encodeURIComponent(msg)}`;
+      
+      // Открываем Telegram в новой вкладке
+      window.open(telegramUrl, '_blank');
+      
+      // Показываем окно успешного оформления
       document.getElementById('modalOverlay').classList.add('show');
+      
+      // Очищаем корзину и форму
       cart = []; 
       renderCart();
       document.getElementById('bookingForm').reset();
+      
+      // Возвращаем табы в исходное состояние
+      switchOrderType('delivery');
     }
 
-    function closeMessengerModal() { document.getElementById('messengerModal').classList.remove('show'); }
     function closeModal() { document.getElementById('modalOverlay').classList.remove('show'); }
 
     /* ── MENU TABS ── */
@@ -1662,4 +1639,4 @@
     }, { passive: true });
   </script>
 </body>
-  </html>
+                    </html>
