@@ -144,6 +144,7 @@
       </offer>
       <offer id="22">
         <name>Люля курица, 200 гр</name>
+        <picture>https://atarh.github.io/myasodaryba2/images/lyulya-kuritsa.png</picture>
         <price>380</price>
         <currencyId>RUB</currencyId>
         <categoryId>3</categoryId>
@@ -156,6 +157,7 @@
       </offer>
       <offer id="24">
         <name>Свинина шея, за 100 гр</name>
+        <picture>https://atarh.github.io/myasodaryba2/images/svinina-sheya.png</picture>
         <price>280</price>
         <currencyId>RUB</currencyId>
         <categoryId>3</categoryId>
@@ -198,6 +200,7 @@
       </offer>
       <offer id="31">
         <name>Барабуля черноморская, за 100 гр</name>
+        <picture>https://atarh.github.io/myasodaryba2/images/barabulya.png</picture>
         <price>240</price>
         <currencyId>RUB</currencyId>
         <categoryId>5</categoryId>
@@ -270,6 +273,7 @@
       </offer>
       <offer id="43">
         <name>Солянка по-грузински, порц</name>
+        <picture>https://atarh.github.io/myasodaryba2/images/solyanka-po-gruzinski.png</picture>
         <price>650</price>
         <currencyId>RUB</currencyId>
         <categoryId>7</categoryId>
@@ -300,6 +304,7 @@
       </offer>
       <offer id="48">
         <name>Хачапури на мангале, порц</name>
+        <picture>https://atarh.github.io/myasodaryba2/images/hachapuri-na-mangale.png</picture>
         <price>390</price>
         <currencyId>RUB</currencyId>
         <categoryId>8</categoryId>
