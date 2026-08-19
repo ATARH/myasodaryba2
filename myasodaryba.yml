@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<yml_catalog date="2026-08-19T14:29+03:00">
+  <shop>
+    <name>Жарочная МясоДаРыба</name>
+    <company>Жарочная МясоДаРыба</company>
+    <url>https://atarh.github.io/myasodaryba2/</url>
+    <categories>
+      <category id="1">БЛЮДА ВО ФРИТЮРЕ</category>
+      <category id="2">БУРГЕР/ШАУРМА</category>
+      <category id="3">МЯСО НА МАНГАЛЕ</category>
+      <category id="4">ОВОЩИ НА МАНГАЛЕ</category>
+      <category id="5">РЫБА НА МАНГАЛЕ</category>
+      <category id="6">САЛАТЫ</category>
+      <category id="7">СУПЫ</category>
+      <category id="8">ХАЧАПУРИ</category>
+      <category id="9">ХИНКАЛИ</category>
+    </categories>
+    <offers>
+      <offer id="1">
+        <name>Картофель по-деревенски, порц</name>
+        <price>190</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+      </offer>
+      <offer id="2">
+        <name>Картофель фри, порц</name>
+        <price>220</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+      </offer>
+      <offer id="3">
+        <name>Луковые кольца, порц</name>
+        <price>210</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+      </offer>
+      <offer id="4">
+        <name>Наггетсы, порц</name>
+        <price>240</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+      </offer>
+      <offer id="5">
+        <name>Сырные палочки 200гр, порц</name>
+        <price>330</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+      </offer>
+      <offer id="6">
+        <name>Люля лаваш баранина, порц</name>
+        <price>560</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>2</categoryId>
+      </offer>
+      <offer id="7">
+        <name>Люля лаваш говядина, порц</name>
+        <price>540</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>2</categoryId>
+      </offer>
+      <offer id="8">
+        <name>Люля лаваш классика, порц</name>
+        <price>500</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>2</categoryId>
+      </offer>
+      <offer id="9">
+        <name>Люля лаваш курица, порц</name>
+        <price>480</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>2</categoryId>
+      </offer>
+      <offer id="10">
+        <name>Шаурма курица, порц</name>
+        <price>380</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>2</categoryId>
+      </offer>
+      <offer id="11">
+        <name>Шаурма свинина, порц</name>
+        <price>410</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>2</categoryId>
+      </offer>
+      <offer id="12">
+        <name>Бургер, шт</name>
+        <price>490</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>2</categoryId>
+      </offer>
+      <offer id="13">
+        <name>Баран кебаб, за 100 гр</name>
+        <price>290</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>3</categoryId>
+      </offer>
+      <offer id="14">
+        <name>Баранина корейка, за 100 гр</name>
+        <price>580</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>3</categoryId>
+      </offer>
+      <offer id="15">
+        <name>Баранина мякоть, за 100 гр</name>
+        <price>490</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>3</categoryId>
+      </offer>
+      <offer id="16">
+        <name>Курица бедро б/к, за 100 гр</name>
+        <price>220</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>3</categoryId>
+      </offer>
+      <offer id="17">
+        <name>Курица крыло, за 100 гр</name>
+        <price>160</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>3</categoryId>
+      </offer>
+      <offer id="18">
+        <name>Курица филе, за 100 гр</name>
+        <price>230</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>3</categoryId>
+      </offer>
+      <offer id="19">
+        <name>Люля из говядины, 200 гр</name>
+        <price>540</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>3</categoryId>
+      </offer>
+      <offer id="20">
+        <name>Люля кебаб баранина, 200 гр</name>
+        <price>680</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>3</categoryId>
+      </offer>
+      <offer id="21">
+        <name>Люля классика, 200 гр</name>
+        <price>420</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>3</categoryId>
+      </offer>
+      <offer id="22">
+        <name>Люля курица, 200 гр</name>
+        <price>380</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>3</categoryId>
+      </offer>
+      <offer id="23">
+        <name>Свинина ребро, за 100 гр</name>
+        <price>220</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>3</categoryId>
+      </offer>
+      <offer id="24">
+        <name>Свинина шея, за 100 гр</name>
+        <price>280</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>3</categoryId>
+      </offer>
+      <offer id="25">
+        <name>Аджапсандал, за 100 гр</name>
+        <price>160</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>4</categoryId>
+      </offer>
+      <offer id="26">
+        <name>Баклажан гриль, за 100 гр</name>
+        <price>170</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>4</categoryId>
+      </offer>
+      <offer id="27">
+        <name>Картофель с салом, за 100 гр</name>
+        <price>130</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>4</categoryId>
+      </offer>
+      <offer id="28">
+        <name>Перец гриль, за 100 гр</name>
+        <price>190</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>4</categoryId>
+      </offer>
+      <offer id="29">
+        <name>Помидор гриль, за 100 гр</name>
+        <price>120</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>4</categoryId>
+      </offer>
+      <offer id="30">
+        <name>Шампиньон гриль, за 100 гр</name>
+        <price>120</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>4</categoryId>
+      </offer>
+      <offer id="31">
+        <name>Барабуля черноморская, за 100 гр</name>
+        <price>240</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>5</categoryId>
+      </offer>
+      <offer id="32">
+        <name>Дорадо, за 100 гр</name>
+        <price>320</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>5</categoryId>
+      </offer>
+      <offer id="33">
+        <name>Семга, за 100 гр</name>
+        <price>580</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>5</categoryId>
+      </offer>
+      <offer id="34">
+        <name>Форель радужная, за 100 гр</name>
+        <price>320</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>5</categoryId>
+      </offer>
+      <offer id="35">
+        <name>Салат с адыгейским сыром, порц</name>
+        <price>360</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>6</categoryId>
+      </offer>
+      <offer id="36">
+        <name>Салат с хрустящим баклажаном, порц</name>
+        <price>420</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>6</categoryId>
+      </offer>
+      <offer id="37">
+        <name>Салат овощной с маслом оливковым, порц</name>
+        <price>320</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>6</categoryId>
+      </offer>
+      <offer id="38">
+        <name>Салат овощной со сметаной, порц</name>
+        <price>310</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>6</categoryId>
+      </offer>
+      <offer id="39">
+        <name>Салат Тбилиси, порц</name>
+        <price>650</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>6</categoryId>
+      </offer>
+      <offer id="40">
+        <name>Цезарь с курицей, порц</name>
+        <price>560</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>6</categoryId>
+      </offer>
+      <offer id="41">
+        <name>Окрошка на квасе, порц</name>
+        <price>350</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>7</categoryId>
+      </offer>
+      <offer id="42">
+        <name>Окрошка на кефире, порц</name>
+        <price>350</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>7</categoryId>
+      </offer>
+      <offer id="43">
+        <name>Солянка по-грузински, порц</name>
+        <price>650</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>7</categoryId>
+      </offer>
+      <offer id="44">
+        <name>Суп харчо, порц</name>
+        <price>420</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>7</categoryId>
+      </offer>
+      <offer id="45">
+        <name>Суп лапша, порц</name>
+        <price>350</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>7</categoryId>
+      </offer>
+      <offer id="46">
+        <name>Сыр на мангале, за 100 гр</name>
+        <price>180</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>8</categoryId>
+      </offer>
+      <offer id="47">
+        <name>Хачапури имиретинский, порц</name>
+        <price>520</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>8</categoryId>
+      </offer>
+      <offer id="48">
+        <name>Хачапури на мангале, порц</name>
+        <price>390</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>8</categoryId>
+      </offer>
+      <offer id="49">
+        <name>Хачапури по мегрельски, порц</name>
+        <price>850</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>8</categoryId>
+      </offer>
+      <offer id="50">
+        <name>Хачапури по-аджарски, порц</name>
+        <price>390</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>8</categoryId>
+      </offer>
+      <offer id="51">
+        <name>Хинкали говядина/свинина, 1 шт</name>
+        <price>110</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>9</categoryId>
+      </offer>
+      <offer id="52">
+        <name>Хинкали с бараниной, 1 шт</name>
+        <price>140</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>9</categoryId>
+      </offer>
+      <offer id="53">
+        <name>Хинкали телятина, 1 шт</name>
+        <price>130</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>9</categoryId>
+      </offer>
+    </offers>
+  </shop>
+</yml_catalog>
