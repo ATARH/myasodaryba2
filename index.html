@@ -17,24 +17,44 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ЖАРОЧНАЯ МясоДаРыба — Заказ еды в Сочи</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;500;600;700&family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Oswald:wght@300;400;500;600;700&family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
   :root {
-    --bg: #0a0a0a;
-    --bg-darker: #050505;
-    --bg-card: #141414;
-    --bg-card-hover: #1a1a1a;
-    --fg: #f5f5f5;
-    --fg-dim: #c0c0c0;
-    --muted: #6a6a6a;
-    --accent: #FF5400;
-    --accent-bright: #FF7A33;
-    --accent-dim: #B33A00;
-    --silver: #C8C8C8;
-    --silver-dim: #5a5a5a;
-    --border: #1f1f1f;
-    --border-light: #2a2a2a;
+    /* Брутальная тёмная палитра: уголь/бетон, раскалённый металл-акцент */
+    --bg: #17130E;
+    --bg-darker: #100D09;
+    --bg-card: #211B14;
+    --bg-card-hover: #2B241A;
+    --fg: #F2E9DC;
+    --fg-dim: #B7A793;
+    --muted: #7A6D5C;
+    --accent: #E14A0A;
+    --accent-bright: #FF6A1F;
+    --accent-dim: #8F2C04;
+    --silver: #9C9184;
+    --silver-dim: #5C5348;
+    --border: #2E2619;
+    --border-light: #3E3323;
+
+    /* Тёмные поверхности (ещё глубже основного фона): шапка, hero, мобильное меню, sticky-бар, футер */
+    --dark-bg: #0C0906;
+    --dark-bg2: #060402;
+    --on-dark: #F2E9DC;
+    --on-dark-dim: #C2B39D;
+  }
+  
+  /* Тёмные (наиболее глубокие) зоны сайта — переопределяем переменные локально,
+     чтобы весь вложенный текст на var(--fg)/var(--fg-dim)/var(--muted) остался читаемым */
+  header, #home, #mobileNav, #stickyCta, footer#contacts {
+    --bg: var(--dark-bg);
+    --bg-darker: var(--dark-bg2);
+    --fg: var(--on-dark);
+    --fg-dim: var(--on-dark-dim);
+    --muted: var(--on-dark-dim);
+    --border: rgba(242,233,220,0.1);
+    --border-light: rgba(242,233,220,0.16);
+    color: var(--on-dark);
   }
   
   * { box-sizing: border-box; }
@@ -51,7 +71,7 @@
     -webkit-font-smoothing: antialiased;
   }
   
-  .font-display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.005em; }
+  .font-display { font-family: 'Yeseva One', serif; letter-spacing: -0.005em; }
   .font-heading { font-family: 'Oswald', sans-serif; }
   .font-body { font-family: 'Archivo', sans-serif; }
   .font-mono { font-family: 'JetBrains Mono', monospace; }
@@ -85,7 +105,7 @@
   .reel-frame.active { opacity: 1; }
   .reel-frame img {
     width: 100%; height: 100%; object-fit: cover;
-    filter: contrast(1.35) brightness(0.5) saturate(0.75); 
+    filter: contrast(1.2) saturate(1.15) brightness(0.88);
     transform: scale(1.06);
   }
   .reel-frame.active img { animation: kenburns 9s ease-out forwards; }
@@ -97,9 +117,9 @@
   .hero-overlay {
     position: absolute; inset: 0;
     background: 
-      linear-gradient(180deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.45) 28%, rgba(10,10,10,0.55) 65%, rgba(10,10,10,0.98) 100%),
-      linear-gradient(90deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.2) 50%, rgba(10,10,10,0.5) 100%),
-      radial-gradient(ellipse at 25% 60%, rgba(255, 84, 0, 0.18) 0%, transparent 55%);
+      linear-gradient(180deg, rgba(6,4,2,0.95) 0%, rgba(6,4,2,0.55) 28%, rgba(6,4,2,0.62) 65%, rgba(6,4,2,0.98) 100%),
+      linear-gradient(90deg, rgba(6,4,2,0.88) 0%, rgba(6,4,2,0.25) 50%, rgba(6,4,2,0.55) 100%),
+      radial-gradient(ellipse at 25% 60%, rgba(225, 74, 10, 0.24) 0%, transparent 55%);
   }
   
   .flip-card { perspective: 1800px; height: 580px; }
@@ -113,8 +133,8 @@
   .flip-back { transform: rotateY(180deg); }
   
   @keyframes pulse-cta {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 84, 0, 0.65), 0 0 40px rgba(255, 84, 0, 0.3); }
-    50% { box-shadow: 0 0 0 18px rgba(255, 84, 0, 0), 0 0 40px rgba(255, 84, 0, 0.3); }
+    0%, 100% { box-shadow: 0 0 0 0 rgba(225, 74, 10, 0.65), 0 0 40px rgba(225, 74, 10, 0.3); }
+    50% { box-shadow: 0 0 0 18px rgba(225, 74, 10, 0), 0 0 40px rgba(225, 74, 10, 0.3); }
   }
   .pulse-btn { animation: pulse-cta 2.4s ease-out infinite; }
   
@@ -134,10 +154,10 @@
   .story-track { display: flex; gap: 1.5rem; cursor: grab; user-select: none; will-change: transform; padding: 0 2rem; }
   .story-track.dragging { cursor: grabbing; }
   .story-track * { pointer-events: none; }
-  .story-card { flex: 0 0 auto; width: 400px; background: var(--bg-card); border: 1px solid var(--border); transition: border-color 0.4s, transform 0.4s; }
-  .story-card:hover { border-color: var(--accent); }
+  .story-card { flex: 0 0 auto; width: 400px; background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 24px; overflow: hidden; transition: border-color 0.4s, transform 0.4s, box-shadow 0.4s; box-shadow: 0 8px 24px rgba(0,0,0,0.45); }
+  .story-card:hover { border-color: var(--accent); box-shadow: 0 14px 32px rgba(0,0,0,0.6); }
   
-  .img-noir { filter: contrast(1.3) brightness(0.65) saturate(0.8); transition: filter 0.8s ease, transform 0.8s ease; }
+  .img-noir { filter: contrast(1.15) saturate(1.15) brightness(0.94); transition: filter 0.8s ease, transform 0.8s ease; }
   
   .text-stroke { -webkit-text-stroke: 1.5px var(--silver-dim); color: transparent; }
   
@@ -150,26 +170,26 @@
   .number-display { font-variant-numeric: tabular-nums; }
   
   .form-input {
-    background: transparent; border: none; border-bottom: 1px solid var(--border-light);
-    color: var(--fg); padding: 0.85rem 0; font-family: 'Oswald', sans-serif; font-size: 1.15rem; width: 100%;
-    transition: border-color 0.3s; letter-spacing: 0.04em;
+    background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 16px;
+    color: var(--fg); padding: 0.9rem 1.1rem; font-family: 'Oswald', sans-serif; font-size: 1.05rem; width: 100%;
+    transition: border-color 0.25s, box-shadow 0.25s; letter-spacing: 0.02em;
   }
-  .form-input:focus { outline: none; border-color: var(--accent); }
-  .form-input::placeholder { color: var(--muted); text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.85rem; }
+  .form-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px rgba(225,74,10,0.12); }
+  .form-input::placeholder { color: var(--muted); text-transform: none; letter-spacing: 0.01em; font-size: 0.95rem; }
   
   .goal-pill {
-    cursor: pointer; padding: 0.55rem 1.1rem; border: 1px solid var(--border-light); background: transparent;
-    color: var(--fg-dim); font-family: 'Oswald', sans-serif; font-size: 0.85rem; letter-spacing: 0.12em;
-    text-transform: uppercase; transition: all 0.3s;
+    cursor: pointer; padding: 0.6rem 1.3rem; border: 1.5px solid var(--border); background: var(--bg-card);
+    color: var(--fg-dim); font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 0.85rem; letter-spacing: 0.04em;
+    text-transform: none; transition: all 0.25s; border-radius: 999px;
   }
-  .goal-pill:hover { border-color: var(--silver-dim); color: var(--fg); }
-  .goal-pill.active { background: var(--accent); border-color: var(--accent); color: #000; font-weight: 600; }
+  .goal-pill:hover { border-color: var(--accent); color: var(--fg); }
+  .goal-pill.active { background: var(--accent); border-color: var(--accent); color: #000; font-weight: 700; box-shadow: 0 4px 14px rgba(225,74,10,0.35); }
   
   .order-tab {
-    border: 1px solid var(--border-light); cursor: pointer; transition: all 0.3s;
+    border: 1.5px solid var(--border); cursor: pointer; transition: all 0.25s; border-radius: 18px; background: var(--bg-card);
   }
   .order-tab:hover { border-color: var(--accent); }
-  .order-tab.active { border-color: var(--accent); background: rgba(255, 84, 0, 0.1); }
+  .order-tab.active { border-color: var(--accent); background: rgba(225, 74, 10, 0.1); box-shadow: 0 4px 14px rgba(225,74,10,0.18); }
   
   @keyframes rec-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
   .rec-dot { animation: rec-blink 1.5s ease-in-out infinite; }
@@ -191,25 +211,23 @@
   .section-marker::before { content: ''; width: 32px; height: 1px; background: var(--accent); }
   
   .coach-img-wrap { position: relative; height: 70%; overflow: hidden; }
-  .coach-img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.3) brightness(0.65) saturate(0.8); transition: filter 0.6s, transform 0.8s; }
-  .flip-card:hover .coach-img-wrap img, .flip-card.flipped .coach-img-wrap img { filter: contrast(1.2) brightness(0.8) saturate(0.9); }
+  .coach-img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.15) saturate(1.2) brightness(0.94); transition: filter 0.6s, transform 0.8s; }
+  .flip-card:hover .coach-img-wrap img, .flip-card.flipped .coach-img-wrap img { filter: contrast(1.2) saturate(1.3) brightness(1) ; }
   
   .booking-frame {
-    background: linear-gradient(135deg, rgba(255,84,0,0.04) 0%, transparent 50%, rgba(255,84,0,0.02) 100%);
-    border: 1px solid var(--border); position: relative;
+    background: var(--bg-card);
+    border: 1.5px solid var(--border); border-radius: 28px; box-shadow: 0 10px 40px rgba(0,0,0,0.5);
   }
-  .booking-frame::before { content: ''; position: absolute; top: 0; left: 0; width: 60px; height: 60px; border-top: 2px solid var(--accent); border-left: 2px solid var(--accent); }
-  .booking-frame::after { content: ''; position: absolute; bottom: 0; right: 0; width: 60px; height: 60px; border-bottom: 2px solid var(--accent); border-right: 2px solid var(--accent); }
   
   .bg-textured {
     background-color: var(--bg);
     background-image: 
-      radial-gradient(circle at 20% 30%, rgba(255, 84, 0, 0.06) 0%, transparent 40%),
-      radial-gradient(circle at 80% 70%, rgba(80, 80, 80, 0.06) 0%, transparent 40%),
+      radial-gradient(circle at 20% 30%, rgba(225, 74, 10, 0.07) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(180, 140, 90, 0.08) 0%, transparent 40%),
       url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='r'><feTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23r)' opacity='0.4'/></svg>");
   }
   
-  .info-card { background: var(--bg-card); border: 1px solid var(--border); transition: border-color 0.4s, background 0.4s; }
+  .info-card { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 20px; transition: border-color 0.4s, background 0.4s, box-shadow 0.4s; box-shadow: 0 8px 24px rgba(0,0,0,0.5); }
   .info-card:hover { border-color: var(--accent-dim); background: var(--bg-card-hover); }
   
   .progress-bar { height: 1px; background: rgba(255, 255, 255, 0.1); overflow: hidden; }
@@ -220,43 +238,42 @@
   .nav-link::before { content: ''; position: absolute; left: -14px; top: 50%; transform: translateY(-50%) scaleY(0); width: 4px; height: 4px; background: var(--accent); transition: transform 0.3s; }
   .nav-link:hover::before { transform: translateY(-50%) scaleY(1); }
   
-  .menu-item { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px dashed var(--border-light); padding: 0.75rem 0; transition: all 0.3s; cursor: pointer; }
-  .menu-item:hover { border-color: var(--accent); padding-left: 0.5rem; color: var(--fg); }
+  .menu-item { display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 16px; padding: 0.9rem 1.1rem; transition: all 0.25s; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+  .menu-item:hover { border-color: var(--accent); color: var(--fg); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.55); }
   .menu-item:hover .menu-price { color: var(--accent); }
+  .menu-price { font-weight: 700; font-size: 1rem; }
   
   .menu-cat-hidden { display: none; }
-  .menu-cat-hidden.active { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1.5rem; }
+  .menu-cat-hidden.active { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem 1rem; }
   
   /* ИСКРЫ */
   .sparks-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; }
   
   /* ИНДИКАТОР РАБОТЫ (ОТКРЫТО/ЗАКРЫТО) */
-  .status-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.85rem; border: 1px solid var(--border-light); font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.3s; white-space: nowrap; }
+  .status-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.9rem; border: 1.5px solid var(--border-light); border-radius: 999px; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.3s; white-space: nowrap; }
   .status-badge .status-dot { width: 8px; height: 8px; border-radius: 50%; background-color: var(--muted); transition: all 0.3s; }
   .status-badge .status-text { font-weight: 700; }
   .status-badge .status-time { color: var(--muted); }
 
-  .status-badge.open { border-color: #00FF00; box-shadow: 0 0 15px rgba(0, 255, 0, 0.3); animation: pulse-status-open 2s ease-out infinite; }
-  .status-badge.open .status-dot { background-color: #00FF00; box-shadow: 0 0 8px #00FF00; }
-  .status-badge.open .status-text { color: #00FF00; text-shadow: 0 0 8px rgba(0, 255, 0, 0.6); }
-  .status-badge.open .status-time { color: #aaffaa; }
+  .status-badge.open { border-color: #7A9A3E; box-shadow: 0 0 15px rgba(122, 154, 62, 0.35); animation: pulse-status-open 2s ease-out infinite; }
+  .status-badge.open .status-dot { background-color: #9BC15A; box-shadow: 0 0 8px #9BC15A; }
+  .status-badge.open .status-text { color: #A8D169; text-shadow: 0 0 8px rgba(154, 200, 90, 0.5); }
+  .status-badge.open .status-time { color: #C9DFA0; }
 
-  .status-badge.closed { border-color: #FF3333; }
-  .status-badge.closed .status-dot { background-color: #FF3333; box-shadow: 0 0 8px #FF3333; }
-  .status-badge.closed .status-text { color: #FF3333; text-shadow: 0 0 8px rgba(255, 0, 0, 0.6); }
+  .status-badge.closed { border-color: #C1401C; }
+  .status-badge.closed .status-dot { background-color: #DE560E; box-shadow: 0 0 8px #DE560E; }
+  .status-badge.closed .status-text { color: #F0844A; text-shadow: 0 0 8px rgba(225, 74, 10, 0.5); }
   .status-badge.closed .status-time { color: var(--muted); }
 
   @keyframes pulse-status-open {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.6), 0 0 15px rgba(0, 255, 0, 0.2); }
-    50% { box-shadow: 0 0 0 6px rgba(0, 255, 0, 0), 0 0 15px rgba(0, 255, 0, 0.2); }
+    0%, 100% { box-shadow: 0 0 0 0 rgba(122, 154, 62, 0.6), 0 0 15px rgba(122, 154, 62, 0.2); }
+    50% { box-shadow: 0 0 0 6px rgba(122, 154, 62, 0), 0 0 15px rgba(122, 154, 62, 0.2); }
   }
   
   /* МОДАЛЬНЫЕ ОКНА */
-  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.85); z-index: 2000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); padding: 1rem; }
+  .modal-overlay { position: fixed; inset: 0; background: rgba(36,22,11,.82); z-index: 2000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); padding: 1rem; }
   .modal-overlay.show { display: flex; }
-  .modal { background: var(--bg-card); padding: 40px 24px; max-width: 480px; width: 100%; text-align: center; position: relative; border: 1px solid var(--accent); }
-  .modal::before { content: ''; position: absolute; top: 0; left: 0; width: 40px; height: 40px; border-top: 2px solid var(--accent); border-left: 2px solid var(--accent); }
-  .modal::after { content: ''; position: absolute; bottom: 0; right: 0; width: 40px; height: 40px; border-bottom: 2px solid var(--accent); border-right: 2px solid var(--accent); }
+  .modal { background: var(--bg-card); padding: 40px 24px; max-width: 480px; width: 100%; text-align: center; position: relative; border: 1.5px solid var(--accent); border-radius: 28px; box-shadow: 0 20px 60px rgba(0,0,0,0.7); }
   .modal-close { position: absolute; top: 15px; right: 20px; background: none; border: none; color: var(--muted); font-size: 24px; cursor: pointer; transition: color 0.2s; }
   .modal-close:hover { color: var(--accent); }
   
@@ -339,10 +356,10 @@
   <canvas class="sparks-canvas" id="sparksCanvas"></canvas>
   
   <!-- Top Nav -->
-  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/50 border-b border-white/5">
+  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-[#0C0906]/75 border-b border-[#F2E9DC]/10">
     <div class="max-w-[1600px] mx-auto px-6 lg:px-10 py-4 flex items-center justify-between">
       <a href="#home" class="flex items-center gap-3 group">
-        <div class="w-9 h-9 bg-[var(--accent)] flex items-center justify-center relative flex-shrink-0">
+        <div class="w-9 h-9 rounded-full bg-[var(--accent)] flex items-center justify-center relative flex-shrink-0">
           <i class="fas fa-fire text-black text-base"></i>
           <div class="absolute -inset-1 border border-[var(--accent)] opacity-0 group-hover:opacity-100 transition-opacity"></div>
         </div>
@@ -366,19 +383,19 @@
           <span class="status-text">ЗАКРЫТО</span>
           <span class="status-time hidden md:inline"></span>
         </div>
-        <a href="#booking" class="hidden sm:inline-block font-heading text-xs tracking-[0.2em] uppercase text-black bg-[var(--silver)] px-5 py-2.5 hover:bg-white transition-colors">
+        <a href="#booking" class="hidden sm:inline-block font-heading text-xs tracking-[0.2em] uppercase text-black bg-[var(--silver)] px-5 py-2.5 rounded-full hover:bg-[#E0B15F] transition-colors">
           Заказать
         </a>
         <div class="burger-menu hidden flex-col gap-1.5 cursor-pointer p-1" onclick="toggleMobileMenu()">
-          <span class="w-6 h-0.5 bg-white"></span>
-          <span class="w-6 h-0.5 bg-white"></span>
-          <span class="w-6 h-0.5 bg-white"></span>
+          <span class="w-6 h-0.5 bg-[#F2E9DC]"></span>
+          <span class="w-6 h-0.5 bg-[#F2E9DC]"></span>
+          <span class="w-6 h-0.5 bg-[#F2E9DC]"></span>
         </div>
       </div>
     </div>
     
     <!-- Mobile Nav -->
-    <div id="mobileNav" class="hidden fixed top-0 right-0 h-screen w-full bg-black flex flex-col items-center justify-center gap-8 z-40">
+    <div id="mobileNav" class="hidden fixed top-0 right-0 h-screen w-full bg-[#0C0906] flex flex-col items-center justify-center gap-8 z-40">
       <a href="#menu" onclick="toggleMobileMenu()" class="font-display text-4xl text-[var(--fg)] hover:text-[var(--accent)]">Меню</a>
       <a href="#signature" onclick="toggleMobileMenu()" class="font-display text-4xl text-[var(--fg)] hover:text-[var(--accent)]">Фирменное</a>
       <a href="#reviews" onclick="toggleMobileMenu()" class="font-display text-4xl text-[var(--fg)] hover:text-[var(--accent)]">Отзывы</a>
@@ -423,7 +440,7 @@
       </div>
       
       <div class="mt-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
-        <a href="#menu" class="pulse-btn inline-flex items-center justify-center gap-3 bg-[var(--accent)] text-black px-8 py-4 font-display text-2xl tracking-wider hover:bg-[var(--accent-bright)] transition-colors w-full lg:w-auto">
+        <a href="#menu" class="pulse-btn inline-flex items-center justify-center gap-3 bg-[var(--accent)] text-black px-8 py-4 rounded-full font-display text-2xl tracking-wider hover:bg-[var(--accent-bright)] transition-colors w-full lg:w-auto">
           <span>СМОТРЕТЬ МЕНЮ</span>
           <i class="fas fa-arrow-right"></i>
         </a>
@@ -440,7 +457,7 @@
       </div>
     </div>
     
-    <div class="absolute bottom-0 left-0 right-0 border-t border-white/5 bg-black/60 backdrop-blur-sm py-3 overflow-hidden z-10">
+    <div class="absolute bottom-0 left-0 right-0 border-t border-[#F2E9DC]/10 bg-[#0C0906]/65 backdrop-blur-sm py-3 overflow-hidden z-10">
       <div class="marquee-track font-display text-sm tracking-[0.25em] text-[var(--silver-dim)]">
         <span class="px-8">ЖИВОЙ ОГОНЬ</span><span class="text-[var(--accent)]">/</span>
         <span class="px-8">ЧЕРНОЕ МОРЕ</span><span class="text-[var(--accent)]">/</span>
@@ -620,10 +637,10 @@
                 <span class="font-mono text-xs tracking-[0.2em] uppercase text-[var(--muted)]">Итого</span>
                 <span class="font-display text-4xl text-[var(--accent)]" id="cartSum">0 ₽</span>
               </div>
-              <div class="p-3 bg-white/5 border-l-2 border-[var(--accent)]/30 text-xs text-[var(--fg-dim)] mb-4" id="deliveryNote">
+              <div class="p-3 rounded-xl bg-[var(--bg)] border border-[var(--border-light)] text-xs text-[var(--fg-dim)] mb-4" id="deliveryNote">
                 <i class="fas fa-truck-fast mr-1"></i> Доставка: уточняйте по телефону
               </div>
-              <a href="#booking" class="block w-full text-center bg-[var(--accent)] text-black py-4 font-heading text-sm tracking-[0.2em] uppercase hover:bg-[var(--accent-bright)] transition-colors">
+              <a href="#booking" class="block w-full text-center bg-[var(--accent)] text-black py-4 rounded-2xl font-heading text-sm tracking-[0.2em] uppercase hover:bg-[var(--accent-bright)] transition-colors">
                 Оформить заказ
               </a>
             </div>
@@ -659,7 +676,7 @@
               <div class="coach-img-wrap">
                 <img src="img04.jpg" alt="Люля-кебаб">
                 <div class="absolute top-4 left-4 font-mono text-[10px] text-[var(--accent)] tracking-[0.2em]">/ 01</div>
-                <div class="absolute top-4 right-4 px-2 py-1 bg-black/60 backdrop-blur-sm font-mono text-[10px] text-[var(--fg)] tracking-[0.15em]">ХИТ</div>
+                <div class="absolute top-4 right-4 px-2 py-1 bg-[#0C0906]/70 backdrop-blur-sm font-mono text-[10px] text-[#F2E9DC] tracking-[0.15em]">ХИТ</div>
               </div>
               <div class="p-6 flex-1 flex flex-col justify-between">
                 <div>
@@ -695,7 +712,7 @@
               <div class="coach-img-wrap">
                 <img src="img06.jpg" alt="Рыба">
                 <div class="absolute top-4 left-4 font-mono text-[10px] text-[var(--accent)] tracking-[0.2em]">/ 02</div>
-                <div class="absolute top-4 right-4 px-2 py-1 bg-black/60 backdrop-blur-sm font-mono text-[10px] text-[var(--fg)] tracking-[0.15em]">ЧЕРНОЕ МОРЕ</div>
+                <div class="absolute top-4 right-4 px-2 py-1 bg-[#0C0906]/70 backdrop-blur-sm font-mono text-[10px] text-[#F2E9DC] tracking-[0.15em]">ЧЕРНОЕ МОРЕ</div>
               </div>
               <div class="p-6 flex-1 flex flex-col justify-between">
                 <div>
@@ -731,7 +748,7 @@
               <div class="coach-img-wrap">
                 <img src="img07.jpg" alt="Хачапури">
                 <div class="absolute top-4 left-4 font-mono text-[10px] text-[var(--accent)] tracking-[0.2em]">/ 03</div>
-                <div class="absolute top-4 right-4 px-2 py-1 bg-black/60 backdrop-blur-sm font-mono text-[10px] text-[var(--fg)] tracking-[0.15em]">ГРУЗИЯ</div>
+                <div class="absolute top-4 right-4 px-2 py-1 bg-[#0C0906]/70 backdrop-blur-sm font-mono text-[10px] text-[#F2E9DC] tracking-[0.15em]">ГРУЗИЯ</div>
               </div>
               <div class="p-6 flex-1 flex flex-col justify-between">
                 <div>
@@ -767,7 +784,7 @@
               <div class="coach-img-wrap">
                 <img src="img05.jpg" alt="Кебаб">
                 <div class="absolute top-4 left-4 font-mono text-[10px] text-[var(--accent)] tracking-[0.2em]">/ 04</div>
-                <div class="absolute top-4 right-4 px-2 py-1 bg-black/60 backdrop-blur-sm font-mono text-[10px] text-[var(--fg)] tracking-[0.15em]">ГОРЯЧЕЕ</div>
+                <div class="absolute top-4 right-4 px-2 py-1 bg-[#0C0906]/70 backdrop-blur-sm font-mono text-[10px] text-[#F2E9DC] tracking-[0.15em]">ГОРЯЧЕЕ</div>
               </div>
               <div class="p-6 flex-1 flex flex-col justify-between">
                 <div>
@@ -822,7 +839,7 @@
             <h3 class="font-display text-3xl md:text-4xl mb-2">ОФОРМИТЬ ЗАКАЗ</h3>
             <p class="text-[var(--fg-dim)] text-sm mb-8">Позвоните или оформите заказ здесь — укажите время когда планируете приехать. Мы разожжём мангал заранее. Никакого ожидания.</p>
 
-            <div class="mb-8 p-5 border border-[var(--border-light)] bg-white/5" id="bookingCartSummary">
+            <div class="mb-8 p-5 rounded-2xl border border-[var(--border-light)] bg-[var(--bg)]" id="bookingCartSummary">
               <div class="flex items-center justify-between mb-1">
                 <span class="font-mono text-[10px] text-[var(--muted)] tracking-[0.2em] uppercase">Ваш заказ</span>
                 <a href="#menu" class="font-mono text-[10px] text-[var(--accent)] tracking-[0.15em] uppercase hover:text-[var(--accent-bright)] transition-colors">Выбрать блюда →</a>
@@ -852,7 +869,7 @@
               </div>
             </div>
 
-            <div id="preorderBanner" style="display:none;" class="mb-6 p-4 border-l-2 border-[var(--accent)] bg-[var(--accent)]/5 text-sm text-[var(--fg-dim)]">
+            <div id="preorderBanner" style="display:none;" class="mb-6 p-4 rounded-2xl border border-[var(--accent)]/40 bg-[var(--accent)]/8 text-sm text-[var(--fg-dim)]">
               <strong class="text-[var(--accent)] font-display text-lg block mb-1">Предзаказ: ваш заказ готовится к вашему приезду</strong>
               Позвоните или оформите заказ здесь — укажите время когда планируете приехать. Мы разожжём мангал заранее, и к вашему приезду всё будет горячим.
             </div>
@@ -889,20 +906,20 @@
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
                   <label class="cursor-pointer">
                     <input type="radio" name="pay" class="peer sr-only" checked value="Наличные при получении">
-                    <div class="text-center py-3 border border-[var(--border-light)] text-[var(--fg-dim)] font-heading text-xs tracking-wider uppercase peer-checked:bg-[var(--accent)] peer-checked:text-black peer-checked:border-[var(--accent)] transition-all">Наличные</div>
+                    <div class="text-center py-3 rounded-xl border border-[var(--border-light)] text-[var(--fg-dim)] font-heading text-xs tracking-wider uppercase peer-checked:bg-[var(--accent)] peer-checked:text-black peer-checked:border-[var(--accent)] transition-all">Наличные</div>
                   </label>
                   <label class="cursor-pointer">
                     <input type="radio" name="pay" class="peer sr-only" value="Карта при получении">
-                    <div class="text-center py-3 border border-[var(--border-light)] text-[var(--fg-dim)] font-heading text-xs tracking-wider uppercase peer-checked:bg-[var(--accent)] peer-checked:text-black peer-checked:border-[var(--accent)] transition-all">Карта</div>
+                    <div class="text-center py-3 rounded-xl border border-[var(--border-light)] text-[var(--fg-dim)] font-heading text-xs tracking-wider uppercase peer-checked:bg-[var(--accent)] peer-checked:text-black peer-checked:border-[var(--accent)] transition-all">Карта</div>
                   </label>
                   <label class="cursor-pointer">
                     <input type="radio" name="pay" class="peer sr-only" value="Перевод на карту">
-                    <div class="text-center py-3 border border-[var(--border-light)] text-[var(--fg-dim)] font-heading text-xs tracking-wider uppercase peer-checked:bg-[var(--accent)] peer-checked:text-black peer-checked:border-[var(--accent)] transition-all">Перевод</div>
+                    <div class="text-center py-3 rounded-xl border border-[var(--border-light)] text-[var(--fg-dim)] font-heading text-xs tracking-wider uppercase peer-checked:bg-[var(--accent)] peer-checked:text-black peer-checked:border-[var(--accent)] transition-all">Перевод</div>
                   </label>
                 </div>
               </div>
               
-              <button type="submit" class="pulse-btn w-full bg-[var(--accent)] text-black py-5 font-display text-2xl tracking-wider hover:bg-[var(--accent-bright)] transition-colors flex items-center justify-center gap-4 mt-4">
+              <button type="submit" class="pulse-btn w-full bg-[var(--accent)] text-black py-5 rounded-2xl font-display text-2xl tracking-wider hover:bg-[var(--accent-bright)] transition-colors flex items-center justify-center gap-4 mt-4">
                 <span>ОТПРАВИТЬ ЗАКАЗ</span>
                 <i class="fas fa-arrow-right"></i>
               </button>
@@ -945,7 +962,7 @@
           <div class="relative h-56 overflow-hidden">
             <img src="img04.jpg" class="w-full h-full object-cover img-noir" alt="Отзыв 1">
             <div class="absolute top-4 left-4 font-mono text-[10px] text-[var(--accent)] tracking-[0.2em]">ОТЗЫВ / 01</div>
-            <div class="absolute bottom-4 right-4 px-2 py-1 bg-[var(--accent)] text-black font-mono text-[10px] tracking-[0.15em]">5 / 5</div>
+            <div class="absolute bottom-4 right-4 px-2.5 py-1 rounded-full bg-[var(--accent)] text-black font-mono text-[10px] tracking-[0.15em]">5 / 5</div>
           </div>
           <div class="p-6">
             <div class="flex items-center justify-between mb-4">
@@ -962,7 +979,7 @@
           <div class="relative h-56 overflow-hidden">
             <img src="img05.jpg" class="w-full h-full object-cover img-noir" alt="Отзыв 2">
             <div class="absolute top-4 left-4 font-mono text-[10px] text-[var(--accent)] tracking-[0.2em]">ОТЗЫВ / 02</div>
-            <div class="absolute bottom-4 right-4 px-2 py-1 bg-[var(--accent)] text-black font-mono text-[10px] tracking-[0.15em]">5 / 5</div>
+            <div class="absolute bottom-4 right-4 px-2.5 py-1 rounded-full bg-[var(--accent)] text-black font-mono text-[10px] tracking-[0.15em]">5 / 5</div>
           </div>
           <div class="p-6">
             <div class="flex items-center justify-between mb-4">
@@ -979,7 +996,7 @@
           <div class="relative h-56 overflow-hidden">
             <img src="img07.jpg" class="w-full h-full object-cover img-noir" alt="Отзыв 3">
             <div class="absolute top-4 left-4 font-mono text-[10px] text-[var(--accent)] tracking-[0.2em]">ОТЗЫВ / 03</div>
-            <div class="absolute bottom-4 right-4 px-2 py-1 bg-[var(--accent)] text-black font-mono text-[10px] tracking-[0.15em]">5 / 5</div>
+            <div class="absolute bottom-4 right-4 px-2.5 py-1 rounded-full bg-[var(--accent)] text-black font-mono text-[10px] tracking-[0.15em]">5 / 5</div>
           </div>
           <div class="p-6">
             <div class="flex items-center justify-between mb-4">
@@ -996,7 +1013,7 @@
           <div class="relative h-56 overflow-hidden">
             <img src="img06.jpg" class="w-full h-full object-cover img-noir" alt="Отзыв 4">
             <div class="absolute top-4 left-4 font-mono text-[10px] text-[var(--accent)] tracking-[0.2em]">ОТЗЫВ / 04</div>
-            <div class="absolute bottom-4 right-4 px-2 py-1 bg-[var(--accent)] text-black font-mono text-[10px] tracking-[0.15em]">НОВИНКА</div>
+            <div class="absolute bottom-4 right-4 px-2.5 py-1 rounded-full bg-[var(--accent)] text-black font-mono text-[10px] tracking-[0.15em]">НОВИНКА</div>
           </div>
           <div class="p-6">
             <div class="flex items-center justify-between mb-4">
@@ -1013,10 +1030,10 @@
       <div class="max-w-[1600px] mx-auto px-6 lg:px-10 mt-10 flex items-center justify-between">
         <div class="flex items-center gap-2" id="storyDots"></div>
         <div class="flex items-center gap-3">
-          <button class="w-11 h-11 border border-[var(--border-light)] hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:text-black transition-all flex items-center justify-center" id="storyPrev">
+          <button class="w-11 h-11 rounded-full border border-[var(--border-light)] hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:text-black transition-all flex items-center justify-center" id="storyPrev">
             <i class="fas fa-arrow-left text-xs"></i>
           </button>
-          <button class="w-11 h-11 border border-[var(--border-light)] hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:text-black transition-all flex items-center justify-center" id="storyNext">
+          <button class="w-11 h-11 rounded-full border border-[var(--border-light)] hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:text-black transition-all flex items-center justify-center" id="storyNext">
             <i class="fas fa-arrow-right text-xs"></i>
           </button>
         </div>
@@ -1025,7 +1042,7 @@
   </section>
   
   <!-- FOOTER & CONTACTS -->
-  <footer class="border-t border-[var(--border)] bg-black py-16 relative overflow-hidden" id="contacts">
+  <footer class="border-t border-[var(--border)] bg-[#0C0906] py-16 relative overflow-hidden" id="contacts">
     <div class="max-w-[1600px] mx-auto px-6 lg:px-10">
       
       <div class="font-display text-[18vw] md:text-[14vw] leading-none text-stroke opacity-30 absolute bottom-0 left-0 right-0 text-center pointer-events-none select-none">
@@ -1035,7 +1052,7 @@
       <div class="relative grid md:grid-cols-12 gap-10 mb-12">
         <div class="md:col-span-5">
           <div class="flex items-center gap-3 mb-5">
-            <div class="w-10 h-10 bg-[var(--accent)] flex items-center justify-center">
+            <div class="w-10 h-10 rounded-full bg-[var(--accent)] flex items-center justify-center">
               <i class="fas fa-fire text-black"></i>
             </div>
             <div>
@@ -1047,10 +1064,10 @@
             Живой огонь, настоящее мясо и рыба с Чёрного моря. Доставка по Сочи или самовывоз — на ваш выбор. Сочи, Тепличная 17В.
           </p>
           <div class="flex gap-3">
-            <a href="https://t.me/miasodaryba_bot" target="_blank" class="w-10 h-10 border border-[var(--border-light)] hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:text-black transition-all flex items-center justify-center">
+            <a href="https://t.me/miasodaryba_bot" target="_blank" class="w-10 h-10 rounded-full border border-[var(--border-light)] hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:text-black transition-all flex items-center justify-center">
               <i class="fab fa-telegram text-sm"></i>
             </a>
-            <a href="tel:+79182091616" class="w-10 h-10 border border-[var(--border-light)] hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:text-black transition-all flex items-center justify-center">
+            <a href="tel:+79182091616" class="w-10 h-10 rounded-full border border-[var(--border-light)] hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:text-black transition-all flex items-center justify-center">
               <i class="fas fa-phone text-sm"></i>
             </a>
           </div>
@@ -1087,7 +1104,7 @@
   
   <!-- STICKY CTA BAR -->
   <div class="sticky-cta" id="stickyCta">
-    <div class="bg-black/90 backdrop-blur-md border-t border-[var(--accent)]/30">
+    <div class="bg-[#0C0906]/93 backdrop-blur-md border-t border-[var(--accent)]/30">
       <div class="max-w-[1600px] mx-auto px-6 lg:px-10 py-4 flex items-center justify-between gap-4">
         <div class="flex items-center gap-5">
           <div id="openStatusSticky" class="status-badge closed">
@@ -1100,7 +1117,7 @@
             <div class="hidden md:block font-mono text-[10px] text-[var(--muted)] tracking-[0.15em] uppercase mt-1">СОЧИ · ТЕПЛИЧНАЯ 17В · 10:00–22:00</div>
           </div>
         </div>
-        <a href="#menu" class="pulse-btn bg-[var(--accent)] text-black px-4 md:px-8 py-3 md:py-3.5 font-heading text-xs md:text-sm tracking-[0.2em] uppercase hover:bg-[var(--accent-bright)] transition-colors flex items-center gap-3 whitespace-nowrap">
+        <a href="#menu" class="pulse-btn bg-[var(--accent)] text-black px-4 md:px-8 py-3 md:py-3.5 rounded-full font-heading text-xs md:text-sm tracking-[0.2em] uppercase hover:bg-[var(--accent-bright)] transition-colors flex items-center gap-3 whitespace-nowrap">
           <span>В МЕНЮ</span>
           <i class="fas fa-arrow-right text-xs"></i>
         </a>
@@ -1115,7 +1132,7 @@
       <i class="fas fa-paper-plane text-5xl mb-4 text-[var(--accent)]"></i>
       <div class="font-display text-3xl mb-2">ПЕРЕХОД В TELEGRAM</div>
       <div class="text-[var(--fg-dim)] text-sm mb-8">Мы открыли нашего бота в Telegram с готовым текстом заказа. Просто нажмите "Отправить" в Telegram, и мы сразу его получим!<br><br>Или звоните сами: <strong class="text-[var(--accent)]">+7 (918) 209-16-16</strong></div>
-      <button class="w-full bg-[var(--accent)] text-black py-4 font-heading text-sm tracking-[0.2em] uppercase hover:bg-[var(--accent-bright)] transition-colors" onclick="closeModal()">Отлично, жду!</button>
+      <button class="w-full bg-[var(--accent)] text-black py-4 rounded-2xl font-heading text-sm tracking-[0.2em] uppercase hover:bg-[var(--accent-bright)] transition-colors" onclick="closeModal()">Отлично, жду!</button>
     </div>
   </div>
   
@@ -1143,7 +1160,7 @@
         this.speedY = -(Math.random() * 2 + 1.5); 
         this.life = 1; 
         this.decay = Math.random() * 0.012 + 0.006; 
-        this.color = Math.random() > 0.5 ? 'rgba(255, 84, 0,' : 'rgba(255, 200, 100,'; 
+        this.color = Math.random() > 0.5 ? 'rgba(225, 74, 10,' : 'rgba(255, 200, 100,'; 
       } 
       update() { 
         this.x += this.speedX; 
