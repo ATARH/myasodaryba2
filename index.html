@@ -39,6 +39,7 @@
   
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; max-width: 100%; overflow-x: hidden; }
+  section[id] { scroll-margin-top: 96px; }
   
   body {
     background: var(--bg);
@@ -820,6 +821,20 @@
             <div class="font-mono text-[11px] text-[var(--accent)] tracking-[0.2em] uppercase mb-3">// Доставка · Самовывоз · Предзаказ</div>
             <h3 class="font-display text-3xl md:text-4xl mb-2">ОФОРМИТЬ ЗАКАЗ</h3>
             <p class="text-[var(--fg-dim)] text-sm mb-8">Позвоните или оформите заказ здесь — укажите время когда планируете приехать. Мы разожжём мангал заранее. Никакого ожидания.</p>
+
+            <div class="mb-8 p-5 border border-[var(--border-light)] bg-white/5" id="bookingCartSummary">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-mono text-[10px] text-[var(--muted)] tracking-[0.2em] uppercase">Ваш заказ</span>
+                <a href="#menu" class="font-mono text-[10px] text-[var(--accent)] tracking-[0.15em] uppercase hover:text-[var(--accent-bright)] transition-colors">Выбрать блюда →</a>
+              </div>
+              <div id="bookingCartEmpty" class="text-sm text-[var(--fg-dim)]">Корзина пуста. Сначала выберите блюда в меню — тогда форма ниже отправит заказ.</div>
+              <div id="bookingCartFilled" style="display:none;">
+                <div id="bookingCartItems" class="text-sm text-[var(--fg-dim)] space-y-1 mb-3"></div>
+                <div class="flex items-center justify-between font-display text-xl border-t border-[var(--border-light)] pt-3">
+                  <span>Итого</span><span id="bookingCartTotal" class="text-[var(--accent)]">0 ₽</span>
+                </div>
+              </div>
+            </div>
             
             <!-- Order Type Tabs -->
             <div class="grid grid-cols-3 gap-2 mb-8">
@@ -1165,9 +1180,9 @@
     /* СЧЕТЧИК ВРЕМЕНИ РАБОТЫ */
     function updateOpenStatus() {
         const now = new Date();
-        const hours = now.getHours();
-        const minutes = now.getMinutes();
-        const seconds = now.getSeconds();
+        // Всегда считаем по времени Сочи (Europe/Moscow, UTC+3), а не по времени устройства посетителя
+        const sochiStr = now.toLocaleString('en-GB', { timeZone: 'Europe/Moscow', hourCycle: 'h23', hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        const [hours, minutes, seconds] = sochiStr.split(':').map(Number);
         const currentSeconds = hours * 3600 + minutes * 60 + seconds;
         
         const openTime = 10 * 3600; // 10:00
@@ -1344,6 +1359,7 @@
         empty.style.display = 'block'; 
         items.style.display = 'none'; 
         total.style.display = 'none'; 
+        updateBookingCartSummary(cart, 0);
         return; 
       }
       empty.style.display = 'none'; 
@@ -1365,6 +1381,31 @@
       
       const totalSum = cart.reduce((a,i) => a + i.price*i.qty, 0);
       sum.textContent = totalSum.toLocaleString('ru') + ' ₽';
+
+      updateBookingCartSummary(cart, totalSum);
+    }
+
+    function updateBookingCartSummary(cart, totalSum) {
+      const bEmpty = document.getElementById('bookingCartEmpty');
+      const bFilled = document.getElementById('bookingCartFilled');
+      const bItems = document.getElementById('bookingCartItems');
+      const bTotal = document.getElementById('bookingCartTotal');
+      if (!bEmpty || !bFilled) return;
+
+      if (!cart || cart.length === 0) {
+        bEmpty.style.display = 'block';
+        bFilled.style.display = 'none';
+        return;
+      }
+      bEmpty.style.display = 'none';
+      bFilled.style.display = 'block';
+      bItems.innerHTML = cart.map(item => `
+        <div class="flex items-center justify-between">
+          <span>${item.name}${item.qty > 1 ? ' ×' + item.qty : ''}</span>
+          <span class="text-[var(--fg)]">${item.price * item.qty} ₽</span>
+        </div>
+      `).join('');
+      bTotal.textContent = totalSum.toLocaleString('ru') + ' ₽';
     }
 
     /* ── ORDER TYPE ── */
@@ -1411,7 +1452,13 @@
         return; 
       }
       if (cart.length === 0) { 
-        alert('Добавьте хотя бы одно блюдо в корзину'); 
+        document.getElementById('menu').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const cartBlock = document.getElementById('cartBlock');
+        if (cartBlock) {
+          cartBlock.classList.remove('cart-flash');
+          void cartBlock.offsetWidth;
+          cartBlock.classList.add('cart-flash');
+        }
         return; 
       }
 
