@@ -1259,8 +1259,11 @@
       chapterNum.textContent = String(idx + 1).padStart(2, '0'); 
     }
     
-    function tickReel() { 
-      frameTimer += 50; 
+    function tickReel(timestamp) { 
+      if (!tickReel.last) tickReel.last = timestamp; 
+      const delta = timestamp - tickReel.last; 
+      tickReel.last = timestamp; 
+      frameTimer += delta; 
       const pct = (frameTimer / frameDuration) * 100; 
       reelProgress.style.width = pct + '%'; 
       if (frameTimer >= frameDuration) { 
