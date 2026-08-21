@@ -340,6 +340,20 @@
     .order-tab .font-mono { font-size: 8px !important; letter-spacing: 0.05em !important; white-space: normal !important; line-height: 1.2; }
     .order-tab { padding: 0.6rem 0.25rem !important; }
     .order-tab i { font-size: 1rem !important; margin-bottom: 0.35rem !important; }
+
+    /* Бегущая строка (marquee) — отключаем на мобильных: лишняя постоянная анимация + backdrop-blur */
+    #home > .absolute.bottom-0.left-0.right-0 { display: none !important; }
+
+    /* Убираем backdrop-blur с фиксированных элементов — самый дорогой CSS-эффект при скролле на мобильных */
+    header.fixed { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; background-color: rgba(12, 9, 6, 0.96) !important; }
+    #stickyCta > div:first-child { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; background-color: rgba(12, 9, 6, 0.98) !important; }
+
+    /* Упрощаем CSS-фильтры на фото — contrast/saturate дорогие на слабых GPU */
+    .reel-frame img, .img-noir, .coach-img-wrap img { filter: none !important; }
+
+    /* Отключаем анимации появления при скролле — блоки сразу видны, без transition на каждый кадр */
+    .reveal, .reveal-stagger > * { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .headline-line span { transform: none !important; transition: none !important; }
   }
 </style>
 
@@ -1212,7 +1226,13 @@
       } 
       requestAnimationFrame(tickReel); 
     }
-    requestAnimationFrame(tickReel);
+    // На мобильных слайдер фото отключаем — оставляем только первый кадр,
+    // без бесконечного цикла и без анимации прогресс-бара (дорогой reflow на каждый кадр)
+    if (isLowPowerDevice) {
+      reelProgress.style.width = '100%';
+    } else {
+      requestAnimationFrame(tickReel);
+    }
     
     /* REVEAL ON SCROLL */
     const revealObserver = new IntersectionObserver((entries) => { 
