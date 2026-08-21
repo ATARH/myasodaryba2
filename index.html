@@ -344,16 +344,15 @@
     /* Бегущая строка (marquee) — отключаем на мобильных: лишняя постоянная анимация + backdrop-blur */
     #home > .absolute.bottom-0.left-0.right-0 { display: none !important; }
 
-    /* Убираем backdrop-blur с фиксированных элементов — самый дорогой CSS-эффект при скролле на мобильных */
-    header.fixed { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; background-color: rgba(12, 9, 6, 0.96) !important; }
-    #stickyCta > div:first-child { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; background-color: rgba(12, 9, 6, 0.98) !important; }
-
-    /* Упрощаем CSS-фильтры на фото — contrast/saturate дорогие на слабых GPU */
+/* Упрощаем CSS-фильтры на фото — contrast/saturate дорогие на слабых GPU */
     .reel-frame img, .img-noir, .coach-img-wrap img { filter: none !important; }
 
     /* Отключаем анимации появления при скролле — блоки сразу видны, без transition на каждый кадр */
     .reveal, .reveal-stagger > * { opacity: 1 !important; transform: none !important; transition: none !important; }
     .headline-line span { transform: none !important; transition: none !important; }
+
+    /* Отключаем мигание кнопок (pulse-btn) — постоянная box-shadow анимация грузит перерисовку каждый кадр */
+    .pulse-btn { animation: none !important; }
   }
 </style>
 
