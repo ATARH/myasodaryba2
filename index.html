@@ -1040,9 +1040,9 @@
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal">
       <button class="modal-close" onclick="closeModal()">✕</button>
-      <i class="fas fa-paper-plane text-5xl mb-4 text-[var(--accent)]"></i>
-      <div class="font-display text-3xl mb-2">ПЕРЕХОД В TELEGRAM</div>
-      <div class="text-[var(--fg-dim)] text-sm mb-8">Мы открыли нашего бота в Telegram с готовым текстом заказа. Просто нажмите "Отправить" в Telegram, и мы сразу его получим!<br><br>Или звоните сами: <strong class="text-[var(--accent)]">+7 (918) 209-16-16</strong></div>
+      <i class="fas fa-check-circle text-5xl mb-4 text-[var(--accent)]" id="modalIcon"></i>
+      <div class="font-display text-3xl mb-2" id="modalTitle">ЗАКАЗ ПРИНЯТ!</div>
+      <div class="text-[var(--fg-dim)] text-sm mb-8" id="modalText">Мы уже начали готовить — скоро свяжемся с вами, чтобы подтвердить детали.<br><br>Есть вопросы? Звоните: <strong class="text-[var(--accent)]">+7 (918) 209-16-16</strong></div>
       <button class="w-full bg-[var(--accent)] text-black py-4 rounded-2xl font-heading text-sm tracking-[0.2em] uppercase hover:bg-[var(--accent-bright)] transition-colors" onclick="closeModal()">Отлично, жду!</button>
     </div>
   </div>
@@ -1422,16 +1422,13 @@
 
       // Тихая отправка через бекенд (Cloudflare Worker → Telegram Bot API).
       // Клиент никогда не видит Telegram — просто нажимает кнопку и получает подтверждение.
-      const telegramUrl = `https://t.me/miasodaryba_bot?text=${encodeURIComponent(msg)}`; // запасной вариант
-
       const submitBtn = document.querySelector('#bookingForm button[type="submit"]');
       const btnHTML = submitBtn.innerHTML;
       submitBtn.disabled = true;
       submitBtn.style.opacity = '0.6';
       submitBtn.innerHTML = '<span>ОТПРАВЛЯЕМ...</span>';
 
-      function finishSuccess() {
-        document.getElementById('modalOverlay').classList.add('show');
+      function resetForm() {
         cart = [];
         renderCart();
         document.getElementById('bookingForm').reset();
@@ -1441,20 +1438,36 @@
         submitBtn.innerHTML = btnHTML;
       }
 
+      function showModal(success) {
+        const icon = document.getElementById('modalIcon');
+        const title = document.getElementById('modalTitle');
+        const text = document.getElementById('modalText');
+        if (success) {
+          icon.className = 'fas fa-check-circle text-5xl mb-4 text-[var(--accent)]';
+          title.textContent = 'ЗАКАЗ ПРИНЯТ!';
+          text.innerHTML = 'Мы уже начали готовить — скоро свяжемся с вами, чтобы подтвердить детали.<br><br>Есть вопросы? Звоните: <strong class="text-[var(--accent)]">+7 (918) 209-16-16</strong>';
+        } else {
+          icon.className = 'fas fa-phone text-5xl mb-4 text-[var(--accent)]';
+          title.textContent = 'ПОЗВОНИТЕ НАМ';
+          text.innerHTML = 'Не получилось отправить заказ автоматически — пожалуйста, позвоните и мы всё оформим сами:<br><br><strong class="text-[var(--accent)]">+7 (918) 209-16-16</strong>';
+        }
+        document.getElementById('modalOverlay').classList.add('show');
+        resetForm();
+      }
+
       fetch(TELEGRAM_WORKER_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: msg }),
       })
-        .then(r => { if (!r.ok) throw new Error('worker error'); return r.json(); })
+        .then(r => { if (!r.ok) throw new Error('worker error ' + r.status); return r.json(); })
         .then(data => {
           if (!data.ok) throw new Error(data.error || 'telegram error');
-          finishSuccess();
+          showModal(true);
         })
-        .catch(() => {
-          // Бекенд недоступен — подстраховка, чтобы заказ не потерялся полностью
-          window.open(telegramUrl, '_blank');
-          finishSuccess();
+        .catch((err) => {
+          console.error('Order send failed:', err);
+          showModal(false);
         });
     }
 
