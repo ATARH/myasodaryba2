@@ -901,6 +901,13 @@
                 </div>
               </div>
               
+              <label class="flex items-start gap-3 cursor-pointer mt-6 mb-2">
+                <input type="checkbox" id="fconsent" class="mt-1 w-4 h-4 accent-[var(--accent)] flex-shrink-0" required>
+                <span class="text-xs text-[var(--fg-dim)] leading-relaxed">
+                  Согласен(на) на обработку персональных данных в соответствии с <a href="policy.html" target="_blank" class="text-[var(--accent)] hover:text-[var(--accent-bright)] underline">Политикой конфиденциальности</a>
+                </span>
+              </label>
+              
               <button type="submit" class="pulse-btn w-full bg-[var(--accent)] text-black py-5 rounded-2xl font-display text-2xl tracking-wider hover:bg-[var(--accent-bright)] transition-colors flex items-center justify-center gap-4 mt-4">
                 <span>ОТПРАВИТЬ ЗАКАЗ</span>
                 <i class="fas fa-arrow-right"></i>
@@ -938,87 +945,9 @@
       </div>
     </div>
     
-    <div class="relative overflow-hidden">
-      <div class="story-track" id="storyTrack">
-        <article class="story-card">
-          <div class="relative h-56 overflow-hidden">
-            <img src="img04.jpg" class="w-full h-full object-cover img-noir" alt="Отзыв 1">
-            <div class="absolute top-4 left-4 font-mono text-[10px] text-[var(--accent)] tracking-[0.2em]">ОТЗЫВ / 01</div>
-            <div class="absolute bottom-4 right-4 px-2.5 py-1 rounded-full bg-[var(--accent)] text-black font-mono text-[10px] tracking-[0.15em]">5 / 5</div>
-          </div>
-          <div class="p-6">
-            <div class="flex items-center justify-between mb-4">
-              <h3 class="font-display text-2xl">ШАШЛЫК</h3>
-              <span class="font-mono text-[10px] text-[var(--muted)] tracking-[0.15em]">ЯНДЕКС</span>
-            </div>
-            <p class="text-[var(--fg-dim)] text-sm leading-relaxed mb-5 italic">
-              "Лучший шашлык в Сочи! Баранина просто тает во рту, а рыба с мангала — это вообще отдельная история."
-            </p>
-          </div>
-        </article>
-        
-        <article class="story-card">
-          <div class="relative h-56 overflow-hidden">
-            <img src="img05.jpg" class="w-full h-full object-cover img-noir" alt="Отзыв 2">
-            <div class="absolute top-4 left-4 font-mono text-[10px] text-[var(--accent)] tracking-[0.2em]">ОТЗЫВ / 02</div>
-            <div class="absolute bottom-4 right-4 px-2.5 py-1 rounded-full bg-[var(--accent)] text-black font-mono text-[10px] tracking-[0.15em]">5 / 5</div>
-          </div>
-          <div class="p-6">
-            <div class="flex items-center justify-between mb-4">
-              <h3 class="font-display text-2xl">ПРЕДЗАКАЗ</h3>
-              <span class="font-mono text-[10px] text-[var(--muted)] tracking-[0.15em]">ЯНДЕКС</span>
-            </div>
-            <p class="text-[var(--fg-dim)] text-sm leading-relaxed mb-5 italic">
-              "Заказывали через предзаказ — всё было готово к приезду. Очень удобно и вкусно. Рекомендую!"
-            </p>
-          </div>
-        </article>
-        
-        <article class="story-card">
-          <div class="relative h-56 overflow-hidden">
-            <img src="img07.jpg" class="w-full h-full object-cover img-noir" alt="Отзыв 3">
-            <div class="absolute top-4 left-4 font-mono text-[10px] text-[var(--accent)] tracking-[0.2em]">ОТЗЫВ / 03</div>
-            <div class="absolute bottom-4 right-4 px-2.5 py-1 rounded-full bg-[var(--accent)] text-black font-mono text-[10px] tracking-[0.15em]">5 / 5</div>
-          </div>
-          <div class="p-6">
-            <div class="flex items-center justify-between mb-4">
-              <h3 class="font-display text-2xl">ХАЧАПУРИ</h3>
-              <span class="font-mono text-[10px] text-[var(--muted)] tracking-[0.15em]">ЯНДЕКС</span>
-            </div>
-            <p class="text-[var(--fg-dim)] text-sm leading-relaxed mb-5 italic">
-              "Хачапури на мангале — это шедевр. Приходим каждую неделю всей семьёй. Спасибо за качество!"
-            </p>
-          </div>
-        </article>
-        
-        <article class="story-card">
-          <div class="relative h-56 overflow-hidden">
-            <img src="img06.jpg" class="w-full h-full object-cover img-noir" alt="Отзыв 4">
-            <div class="absolute top-4 left-4 font-mono text-[10px] text-[var(--accent)] tracking-[0.2em]">ОТЗЫВ / 04</div>
-            <div class="absolute bottom-4 right-4 px-2.5 py-1 rounded-full bg-[var(--accent)] text-black font-mono text-[10px] tracking-[0.15em]">НОВИНКА</div>
-          </div>
-          <div class="p-6">
-            <div class="flex items-center justify-between mb-4">
-              <h3 class="font-display text-2xl">РЫБА</h3>
-              <span class="font-mono text-[10px] text-[var(--muted)] tracking-[0.15em]">АКЦИЯ</span>
-            </div>
-            <p class="text-[var(--fg-dim)] text-sm leading-relaxed mb-5 italic">
-              "Барабуля и сарган черноморские — свежий улов на мангале. Попробуйте то, что большинство кафе не предлагает вовсе."
-            </p>
-          </div>
-        </article>
-      </div>
-      
-      <div class="max-w-[1600px] mx-auto px-6 lg:px-10 mt-10 flex items-center justify-between">
-        <div class="flex items-center gap-2" id="storyDots"></div>
-        <div class="flex items-center gap-3">
-          <button class="w-11 h-11 rounded-full border border-[var(--border-light)] hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:text-black transition-all flex items-center justify-center" id="storyPrev">
-            <i class="fas fa-arrow-left text-xs"></i>
-          </button>
-          <button class="w-11 h-11 rounded-full border border-[var(--border-light)] hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:text-black transition-all flex items-center justify-center" id="storyNext">
-            <i class="fas fa-arrow-right text-xs"></i>
-          </button>
-        </div>
+    <div class="max-w-[900px] mx-auto px-6 lg:px-10">
+      <div class="rounded-3xl overflow-hidden border border-[var(--border)]" style="height:640px; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
+        <iframe src="https://yandex.ru/maps-reviews-widget/132382563576?comments" width="100%" height="100%" frameborder="0" style="border:0; display:block;" loading="lazy" title="Отзывы ЖАРОЧНАЯ на Яндекс Картах"></iframe>
       </div>
     </div>
   </section>
@@ -1077,7 +1006,7 @@
       <div class="relative border-t border-[var(--border)] pt-6 flex flex-col md:flex-row justify-between gap-4 text-[var(--muted)] font-mono text-[11px] tracking-[0.15em] uppercase">
         <div>© 2024 ЖАРОЧНАЯ МясоДаРыба · СОЧИ</div>
         <div class="flex gap-6">
-          <a href="#" class="hover:text-[var(--accent)] transition-colors">Политика</a>
+          <a href="policy.html" class="hover:text-[var(--accent)] transition-colors">Политика</a>
           <a href="#" class="hover:text-[var(--accent)] transition-colors">Оферта</a>
         </div>
       </div>
@@ -1328,6 +1257,8 @@
     }
 
     /* ── CART LOGIC ── */
+    const TELEGRAM_WORKER_URL = 'https://myasodaryba.n6958123.workers.dev';
+
     let cart = [];
     
     function addToCart(name, price, unit) {
@@ -1449,8 +1380,14 @@
       const arrival = document.getElementById('farrival') ? document.getElementById('farrival').value.trim() : '';
       const pay = document.querySelector('input[name="pay"]:checked').value;
 
+      const consent = document.getElementById('fconsent') ? document.getElementById('fconsent').checked : true;
+
       if (!name || !phone) { 
         alert('Пожалуйста, укажите имя и телефон'); 
+        return; 
+      }
+      if (!consent) { 
+        alert('Пожалуйста, подтвердите согласие на обработку персональных данных'); 
         return; 
       }
       if (cart.length === 0) { 
@@ -1483,22 +1420,42 @@
       msg += `Итого: ${total.toLocaleString('ru')} ₽`;
       if (comment) msg += `\n\nКомментарий: ${comment}`;
 
-      // Прямая ссылка на твоего бота с предзаполненным текстом
-      const telegramUrl = `https://t.me/miasodaryba_bot?text=${encodeURIComponent(msg)}`;
-      
-      // Открываем Telegram в новой вкладке
-      window.open(telegramUrl, '_blank');
-      
-      // Показываем окно успешного оформления
-      document.getElementById('modalOverlay').classList.add('show');
-      
-      // Очищаем корзину и форму
-      cart = []; 
-      renderCart();
-      document.getElementById('bookingForm').reset();
-      
-      // Возвращаем табы в исходное состояние
-      switchOrderType('delivery');
+      // Тихая отправка через бекенд (Cloudflare Worker → Telegram Bot API).
+      // Клиент никогда не видит Telegram — просто нажимает кнопку и получает подтверждение.
+      const telegramUrl = `https://t.me/miasodaryba_bot?text=${encodeURIComponent(msg)}`; // запасной вариант
+
+      const submitBtn = document.querySelector('#bookingForm button[type="submit"]');
+      const btnHTML = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = '0.6';
+      submitBtn.innerHTML = '<span>ОТПРАВЛЯЕМ...</span>';
+
+      function finishSuccess() {
+        document.getElementById('modalOverlay').classList.add('show');
+        cart = [];
+        renderCart();
+        document.getElementById('bookingForm').reset();
+        switchOrderType('delivery');
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = '';
+        submitBtn.innerHTML = btnHTML;
+      }
+
+      fetch(TELEGRAM_WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: msg }),
+      })
+        .then(r => { if (!r.ok) throw new Error('worker error'); return r.json(); })
+        .then(data => {
+          if (!data.ok) throw new Error(data.error || 'telegram error');
+          finishSuccess();
+        })
+        .catch(() => {
+          // Бекенд недоступен — подстраховка, чтобы заказ не потерялся полностью
+          window.open(telegramUrl, '_blank');
+          finishSuccess();
+        });
     }
 
     function closeModal() { document.getElementById('modalOverlay').classList.remove('show'); }
@@ -1679,7 +1636,7 @@
         } 
       }
     }
-    new StoriesCarousel(document.getElementById('storyTrack'), { interval: 4500 });
+    // Карусель отзывов больше не используется — заменена живым виджетом Яндекс.Карт
     
     /* GRAIN PARALLAX */
     const grain = document.getElementById('grain');
