@@ -1257,7 +1257,7 @@
     }
 
     /* ── CART LOGIC ── */
-    const TELEGRAM_WORKER_URL = 'https://myasodaryba.n6958123.workers.dev';
+    const IIKO_ORDER_URL = 'https://myasodaryba-iiko.n6958123.workers.dev/order';
 
     let cart = [];
     
@@ -1404,24 +1404,24 @@
       const isDelivery = document.getElementById('tabDelivery').classList.contains('active');
       const isPickup = document.getElementById('tabPickup').classList.contains('active');
       const isPreorder = document.getElementById('tabPreorder').classList.contains('active');
-      let orderType = isDelivery ? 'Доставка' : isPickup ? 'Самовывоз' : 'Предзаказ';
 
-      const items = cart.map(i => `• ${i.name}${i.qty > 1 ? ' ×' + i.qty : ''} — ${i.price * i.qty} ₽`).join('\n');
-      const total = cart.reduce((a, i) => a + i.price * i.qty, 0);
+      const deliveryType = isDelivery ? 'delivery' : 'pickup'; // pickup и preorder оба идут как самовывоз в кассу
 
-      let msg = `🔥 НОВЫЙ ЗАКАЗ - ЖАРОЧНАЯ МясоДаРыба\n\n`;
-      msg += `Имя: ${name}\n`;
-      msg += `Телефон: ${phone}\n`;
-      msg += `Тип: ${orderType}\n`;
-      if (address) msg += `Адрес: ${address}\n`;
-      if (arrival) msg += `Время приезда: ${arrival}\n`;
-      msg += `Оплата: ${pay}\n\n`;
-      msg += `Состав заказа:\n${items}\n\n`;
-      msg += `Итого: ${total.toLocaleString('ru')} ₽`;
-      if (comment) msg += `\n\nКомментарий: ${comment}`;
+      const orderItems = cart.map(i => ({ key: i.name, qty: i.qty }));
 
-      // Тихая отправка через бекенд (Cloudflare Worker → Telegram Bot API).
-      // Клиент никогда не видит Telegram — просто нажимает кнопку и получает подтверждение.
+      const orderBody = {
+        phone,
+        name,
+        items: orderItems,
+        deliveryType,
+        address: isDelivery ? address : '',
+        arrivalTime: isPreorder ? arrival : '',
+        paymentMethod: pay,
+        comment,
+      };
+
+      // Тихая отправка через бекенд (Cloudflare Worker → iiko Cloud API).
+      // Клиент не видит iiko — просто нажимает кнопку и получает подтверждение.
       const submitBtn = document.querySelector('#bookingForm button[type="submit"]');
       const btnHTML = submitBtn.innerHTML;
       submitBtn.disabled = true;
@@ -1455,14 +1455,13 @@
         resetForm();
       }
 
-      fetch(TELEGRAM_WORKER_URL, {
+      fetch(IIKO_ORDER_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: msg }),
+        body: JSON.stringify(orderBody),
       })
-        .then(r => { if (!r.ok) throw new Error('worker error ' + r.status); return r.json(); })
-        .then(data => {
-          if (!data.ok) throw new Error(data.error || 'telegram error');
+        .then(r => { if (!r.ok) return r.text().then(t => { throw new Error('worker error ' + r.status + ': ' + t); }); return r.json(); })
+        .then(() => {
           showModal(true);
         })
         .catch((err) => {
