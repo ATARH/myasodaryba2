@@ -1371,10 +1371,25 @@
       }
     }
 
-    /* ── SUBMIT ORDER (TELEGRAM BOT INTEGRATION) ── */
+    /* ── PHONE NORMALIZATION ──
+       Приводит номер к формату +7XXXXXXXXXX, который требует iiko.
+       Принимает: 89991234567, 9991234567, +79991234567, 7 (999) 123-45-67 и т.п. */
+    function normalizePhone(raw) {
+      let digits = raw.replace(/\D/g, ''); // оставляем только цифры
+
+      if (digits.length === 11 && (digits[0] === '7' || digits[0] === '8')) {
+        digits = '7' + digits.slice(1);
+      } else if (digits.length === 10) {
+        digits = '7' + digits;
+      }
+      return '+' + digits;
+    }
+
+    /* ── SUBMIT ORDER (IIKO INTEGRATION) ── */
     function submitOrder() {
       const name = document.getElementById('fname').value.trim();
-      const phone = document.getElementById('fphone').value.trim();
+      const phoneRaw = document.getElementById('fphone').value.trim();
+      const phone = normalizePhone(phoneRaw);
       const address = document.getElementById('faddress') ? document.getElementById('faddress').value.trim() : '';
       const comment = document.getElementById('fcomment').value.trim();
       const arrival = document.getElementById('farrival') ? document.getElementById('farrival').value.trim() : '';
