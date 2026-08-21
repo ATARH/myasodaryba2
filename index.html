@@ -1477,6 +1477,7 @@
       })
         .then(r => { if (!r.ok) return r.text().then(t => { throw new Error('worker error ' + r.status + ': ' + t); }); return r.json(); })
         .then(() => {
+          if (typeof ym === 'function') { ym(111460367, 'reachGoal', 'order_submitted'); }
           showModal(true);
         })
         .catch((err) => {
