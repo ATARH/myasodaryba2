@@ -363,6 +363,7 @@
 </style>
 
 <!-- Yandex.Metrika counter -->
+<script>window.dataLayer = window.dataLayer || [];</script>
 <script type="text/javascript" >
    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
    m[i].l=1*new Date();
@@ -374,7 +375,8 @@
         clickmap:true,
         trackLinks:true,
         accurateTrackBounce:true,
-        webvisor:true
+        webvisor:true,
+        ecommerce:"dataLayer"
    });
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/111460367" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
@@ -1529,6 +1531,24 @@
         .then(r => { if (!r.ok) return r.text().then(t => { throw new Error('worker error ' + r.status + ': ' + t); }); return r.json(); })
         .then(() => {
           if (typeof ym === 'function') { ym(111460367, 'reachGoal', 'order_submitted'); }
+
+          // Ecommerce: передаём в Метрику состав заказа, чтобы видеть, что чаще всего берут
+          const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            ecommerce: {
+              currencyCode: 'RUB',
+              purchase: {
+                actionField: { id: 'order-' + Date.now(), revenue: total },
+                products: cart.map(i => ({
+                  name: i.name,
+                  price: i.price,
+                  quantity: i.qty
+                }))
+              }
+            }
+          });
+
           showModal(true);
         })
         .catch((err) => {
